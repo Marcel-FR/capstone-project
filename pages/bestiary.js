@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function Home() {
+export default function BestiaryPage() {
   return (
     <>
       <main>
-        <Heading>Home</Heading>
+        <Heading>Bestiary</Heading>
+        <Link href="/">
+          <button>Home</button>
+        </Link>
       </main>
-      <Link href="/bestiary">
-        <button>Bestiary</button>
-      </Link>
     </>
   );
 }
