@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Home() {
   return (
     <main>
-      <Heading>🐋Capstone Whales Template🐋</Heading>
+      <Heading>Bestiary</Heading>
     </main>
   );
 }
