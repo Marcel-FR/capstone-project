@@ -50,8 +50,7 @@ return (
         <MonsterName key={monster.index}>
           <MonsterInfo>
             <div>{monster.name}</div>
-            <div>{`Challenge Rating: ${monster.challenge_rating}`}</div>
-            <div>{`Type: ${monster.type}`}</div>
+            <div>{`${monster.type}`} {`CR: ${monster.challenge_rating}`}</div>
           </MonsterInfo>
         </MonsterName>
       ))}
