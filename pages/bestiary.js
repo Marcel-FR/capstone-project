@@ -22,27 +22,42 @@ export default function BestiaryPage() {
     margin: 0;
   `;
 
-  const MonsterName = styled.li`
-    border: 2px solid transparent;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-  `;
+const MonsterName = styled.li`
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: 2px solid transparent;
+width: 100%;
+padding: 10px;
+text-align: left;
+`;
 
-  return (
-    <>
-      <main>
-        <Heading>Bestiary</Heading>
-        <Link href="/">
-          <button>Home</button>
-        </Link>
-        <MonsterList>
-          {monsters.map((monster) => (
-            <MonsterName key={monster.index}>{monster.name}</MonsterName>
-          ))}
-        </MonsterList>
-        {console.log("${monsters.length} monsters listed")}
-      </main>
-    </>
-  );
+const MonsterInfo = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+`;
+
+return (
+<>
+  <main>
+    <Heading>Bestiary</Heading>
+    <Link href="/">
+      <button>Home</button>
+    </Link>
+    <MonsterList>
+      {monsters.map((monster) => (
+        <MonsterName key={monster.index}>
+          <MonsterInfo>
+            <div>{monster.name}</div>
+            <div>{`Challenge Rating: ${monster.challenge_rating}`}</div>
+            <div>{`Type: ${monster.type}`}</div>
+          </MonsterInfo>
+        </MonsterName>
+      ))}
+    </MonsterList>
+    {console.log(`${monsters.length} monsters listed`)}
+  </main>
+</>
+);
 }
