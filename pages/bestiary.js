@@ -23,7 +23,7 @@ export default function BestiaryPage() {
   `;
 
   const MonsterName = styled.li`
-    border: 1px solid black;
+    border: 2px solid transparent;
     width: 100%;
     padding: 10px;
     text-align: left;
