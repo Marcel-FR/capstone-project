@@ -3,25 +3,15 @@ export async function fetchMonsters() {
   const response = await fetch("https://www.dnd5eapi.co/api/monsters");
   const data = await response.json();
 
-  const monsters = await Promise.all(
-    data.results.map(async (monster) => {
-      const response = await fetch(`https://www.dnd5eapi.co${monster.url}`);
-      const data = await response.json();
-      return {
-        name: monster.name,
-        challenge_rating: data.challenge_rating,
-        type: data.type,
-      };
-    })
-  );
+  const monsterNames = data.results.map((monster) => monster.name);
 
   const endTime = performance.now();
   console.log(`Fetching monsters took ${endTime - startTime} milliseconds.`);
 
-  return monsters;
+  return monsterNames;
 }
 
-// The Code above was partially taken from "bagelbits" one of the creators of the API and partially from different forums on the internet.
+// The Code above was partially taken from "bagelbits" one of the creators of the API and partially from various forums on the internet.
 
 export async function fetchSpells() {
   const response = await fetch("https://www.dnd5eapi.co/api/spells");

@@ -32,12 +32,6 @@ export default function BestiaryPage() {
     text-align: left;
   `;
 
-  const MonsterInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  `;
-
   return (
     <>
       <main>
@@ -46,14 +40,9 @@ export default function BestiaryPage() {
           <button>Home</button>
         </Link>
         <MonsterList>
-          {monsters.map((monster) => (
-            <MonsterName key={monster.index}>
-              <MonsterInfo>
-                <div>{monster.name}</div>
-                <div>
-                  {`${monster.type}`} {`CR: ${monster.challenge_rating}`}
-                </div>
-              </MonsterInfo>
+          {monsters.map((monsterName) => (
+            <MonsterName key={monsterName}>
+              <div>{monsterName}</div>
             </MonsterName>
           ))}
         </MonsterList>
