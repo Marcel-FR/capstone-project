@@ -1,4 +1,5 @@
 export async function fetchMonsters() {
+  const startTime = performance.now();
   const response = await fetch("https://www.dnd5eapi.co/api/monsters");
   const data = await response.json();
 
@@ -6,13 +7,16 @@ export async function fetchMonsters() {
     data.results.map(async (monster) => {
       const response = await fetch(`https://www.dnd5eapi.co${monster.url}`);
       const data = await response.json();
-      return { 
-        name: monster.name, 
-        challenge_rating: data.challenge_rating, 
-        type: data.type 
+      return {
+        name: monster.name,
+        challenge_rating: data.challenge_rating,
+        type: data.type,
       };
     })
   );
+
+  const endTime = performance.now();
+  console.log(`Fetching monsters took ${endTime - startTime} milliseconds.`);
 
   return monsters;
 }
