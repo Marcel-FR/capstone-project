@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { fetchMonsters } from "../resources/lib/dnd-api";
+import { fetchMonsters } from "../../resources/lib/dnd-api";
 
 export default function BestiaryPage() {
   const [monsters, setMonsters] = useState([]);
@@ -30,6 +30,7 @@ export default function BestiaryPage() {
     width: 100%;
     padding: 10px;
     text-align: left;
+    cursor: pointer;
   `;
 
   return (
