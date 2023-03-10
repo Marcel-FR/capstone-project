@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
 export default function BestiaryPage() {
   const [monstersList, setMonstersList] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     setMonstersList(monsters);
   }, []);
-
-  // The useEffect code above was partially taken from stackoverflow
 
   const Heading = styled.h1`
     text-align: center;
@@ -52,16 +52,35 @@ export default function BestiaryPage() {
     }
   `;
 
+  const StyledButton = styled.a`
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ccc;
+    text-decoration: none;
+    color: #333;
+  `;
+
+  // The styled components were partially taken from StackOverflow
+
+  const handleClick = (id) => {
+    router.push(`/bestiary/${id}`);
+  };
+
+  // The code above has been taken from various websites
+
   return (
     <>
       <main>
         <Heading>Bestiary</Heading>
         <Link href="/">
-        Home
+          <StyledButton>Home</StyledButton>
         </Link>
         <MonsterList>
           {monstersList.map((monster) => (
-            <MonsterName key={monster.index}>
+            <MonsterName
+              key={monster.index}
+              onClick={() => handleClick(monster.index)}
+            >
               <div>{monster.name}</div>
               <div className="monster-details">
                 <div className="monster-type">Type: {monster.type}</div>
