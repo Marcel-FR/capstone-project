@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { fetchMonsters } from "../../resources/lib/dnd-api";
+
+const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
 export default function BestiaryPage() {
-  const [monsters, setMonsters] = useState([]);
+  const [monstersList, setMonstersList] = useState([]);
 
   useEffect(() => {
-    fetchMonsters().then((data) => setMonsters(data));
+    setMonstersList(monsters);
   }, []);
 
-  // The useEffect code above was partly taken from stackoverflow
+  // The useEffect code above was partially taken from stackoverflow
 
   const Heading = styled.h1`
     text-align: center;
@@ -41,13 +42,13 @@ export default function BestiaryPage() {
           <button>Home</button>
         </Link>
         <MonsterList>
-          {monsters.map((monsterName) => (
-            <MonsterName key={monsterName}>
-              <div>{monsterName}</div>
+          {monstersList.map((monster) => (
+            <MonsterName key={monster.index}>
+              <div>{monster.name}</div>
             </MonsterName>
           ))}
         </MonsterList>
-        {console.log(`${monsters.length} monsters listed`)}
+        {console.log(`${monstersList.length} monsters listed`)}
       </main>
     </>
   );
