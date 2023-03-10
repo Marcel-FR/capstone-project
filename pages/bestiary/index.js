@@ -17,6 +17,12 @@ export default function BestiaryPage() {
     text-align: center;
   `;
 
+const StyledLink = styled.a`
+color: #CCCCCC;
+font-weight: bold;
+text-decoration: none;
+`;
+
   const MonsterList = styled.ul`
     list-style: none;
     padding: 0;
@@ -57,7 +63,7 @@ export default function BestiaryPage() {
       <main>
         <Heading>Bestiary</Heading>
         <Link href="/">
-          <button>Home</button>
+          <StyledLink>Home</StyledLink>
         </Link>
         <MonsterList>
           {monstersList.map((monster) => (
