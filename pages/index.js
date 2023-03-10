@@ -8,7 +8,7 @@ export default function Home() {
         <Heading>Home</Heading>
       </main>
       <Link href="/bestiary">
-        <StyledLink>Bestiary</StyledLink>
+      Bestiary
       </Link>
     </>
   );
@@ -16,10 +16,4 @@ export default function Home() {
 
 const Heading = styled.h1`
   text-align: center;
-`;
-
-const StyledLink = styled.a`
-  color: #CCCCCC;
-  font-weight: bold;
-  text-decoration: none;
 `;
