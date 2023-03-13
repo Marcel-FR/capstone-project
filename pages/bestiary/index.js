@@ -5,76 +5,60 @@ import { useRouter } from "next/router";
 
 const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
-export default function BestiaryPage() {
-  const [monstersList, setMonstersList] = useState([]);
-  const router = useRouter();
+const Heading = styled.h1`
+  text-align: center;
+`;
 
-  useEffect(() => {
-    setMonstersList(monsters);
-  }, []);
+const MonsterList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-  const Heading = styled.h1`
-    text-align: center;
-  `;
+const MonsterName = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: bold;
 
-  const MonsterList = styled.ul`
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  `;
-
-  const MonsterName = styled.li`
+  .monster-details {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid transparent;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    font-size: 1.2rem;
-    font-weight: bold;
+    flex-direction: column;
+    margin-left: 10px;
 
-    .monster-details {
-      display: flex;
-      flex-direction: column;
-      margin-left: 10px;
-
-      .monster-type {
-        font-style: italic;
-        font-size: 0.8rem;
-      }
-
-      .monster-cr {
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-left: auto;
-      }
+    .monster-type {
+      font-style: italic;
+      font-size: 0.8rem;
     }
-  `;
 
-  const StyledButton = styled.a`
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #ccc;
-    text-decoration: none;
-    color: #333;
-  `;
+    .monster-cr {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-left: auto;
+    }
+  }
+`;
 
-  // The styled components were partially taken from StackOverflow
+// The styled components were partially taken from StackOverflow
+
+export default function BestiaryPage() {
+  const [monstersList] = useState(monsters);
+  const router = useRouter();
 
   const handleClick = (id) => {
     router.push(`/bestiary/${id}`);
   };
 
-  // The code above has been taken from various websites
-
   return (
     <>
       <main>
         <Heading>Bestiary</Heading>
-        <Link href="/">
-          <StyledButton>Home</StyledButton>
-        </Link>
+        <Link href="/">Home</Link>
         <MonsterList>
           {monstersList.map((monster) => (
             <MonsterName

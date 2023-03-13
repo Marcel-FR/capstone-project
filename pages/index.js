@@ -16,7 +16,7 @@ export default function Home() {
         <Heading>Home</Heading>
       </main>
       <Link href="/bestiary">
-        <StyledButton>Bestiary</StyledButton>
+        Bestiary
       </Link>
     </>
   );
