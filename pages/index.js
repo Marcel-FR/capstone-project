@@ -15,9 +15,7 @@ export default function Home() {
       <main>
         <Heading>Home</Heading>
       </main>
-      <Link href="/bestiary">
-        Bestiary
-      </Link>
+      <Link href="/bestiary">Bestiary</Link>
     </>
   );
 }
