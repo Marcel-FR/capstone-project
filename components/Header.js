@@ -19,6 +19,7 @@ const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
   margin: 0 125px 0 0;
+
 `;
 
 const StyledBackButton = styled.button`
@@ -32,7 +33,6 @@ const Icon = styled( backArrowIcon)`
   margin: 5px 0 0 15px;
   vertical-align: middle;
 `;
-
 
 /* const Search = styled( searchIcon)`
   fill: #f5e5c3;
