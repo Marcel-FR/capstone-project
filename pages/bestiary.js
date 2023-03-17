@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchMonsters } from "../resources/lib/dnd-api";
+import { Header } from '../components/Header';
 
 export default function BestiaryPage() {
   const [monsters, setMonsters] = useState([]);
@@ -10,7 +11,7 @@ export default function BestiaryPage() {
     fetchMonsters().then((data) => setMonsters(data));
   }, []);
 
-  // The useEffect code above was partly taken from stackoverflow
+  // The useEffect code above was partly taken from StackOverflow
 
   const Heading = styled.h1`
     text-align: center;
@@ -35,7 +36,7 @@ export default function BestiaryPage() {
   return (
     <>
       <main>
-        <Heading>Bestiary</Heading>
+        <Header pageTitle="Bestiary" />
         <Link href="/">
           <button>Home</button>
         </Link>
