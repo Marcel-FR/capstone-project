@@ -1,7 +1,6 @@
 // The knowledge about the correct import/export and styling of the SVGs was taken from various websites on the Internet.
 
-
-// Header
+// Header section
 
 export function backArrowIcon(props) {
   return (
@@ -19,4 +18,4 @@ export function searchIcon(props) {
   );
 }
 
-// More SVGs to come..
+// More SVG sections to come..
