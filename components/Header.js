@@ -40,6 +40,8 @@ const Search = styled( searchIcon)`
   vertical-align: middle;
 `;
 
+// Styling was taken from StackOverflow
+
 export const Header = ({ pageTitle }) => {
   const router = useRouter();
 

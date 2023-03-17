@@ -1,3 +1,8 @@
+// The knowledge about the correct import/export and styling of the SVGs was taken from various websites on the Internet.
+
+
+// Header
+
 export function backArrowIcon(props) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 48 48" {...props}>
@@ -13,3 +18,5 @@ export function searchIcon(props) {
     </svg>
   );
 }
+
+// More SVGs to come..
