@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Header } from "@/components/Header";
 
 const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
@@ -57,8 +58,7 @@ export default function BestiaryPage() {
   return (
     <>
       <main>
-        <Heading>Bestiary</Heading>
-        <Link href="/">Home</Link>
+      <Header pageTitle={"Bestiary"}/>
         <MonsterList>
           {monstersList.map((monster) => (
             <MonsterName
