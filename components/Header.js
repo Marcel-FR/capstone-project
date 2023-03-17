@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
 const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
-  margin: 0 5px 0 0;
+  margin: 0 125px 0 0;
 `;
 
 const StyledBackButton = styled.button`
@@ -34,11 +34,11 @@ const Icon = styled( backArrowIcon)`
 `;
 
 
-const Search = styled( searchIcon)`
+/* const Search = styled( searchIcon)`
   fill: #f5e5c3;
   margin: 0 20px 0 0;
   vertical-align: middle;
-`;
+`; */
 
 // Styling was taken from StackOverflow
 
@@ -53,7 +53,6 @@ export const Header = ({ pageTitle }) => {
         </StyledBackButton>
       </Link>
       <StyledTitle>{pageTitle}</StyledTitle>
-        <Search />
     </StyledHeader>
   );
 };
