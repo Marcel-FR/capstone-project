@@ -7,49 +7,53 @@ export default function StatsTable(props) {
     return `${value}${type ? ` (${type})` : ""}`;
   }
 
-// The code above returns the armor class of a monster if available. If it's not available, it will return an empty string
+  // The code above returns the armor class of a monster if available. If it's not available, it will return an empty string
 
-function getSpeed(monster) {
-  const { walk = "", swim = "", hover = "" } = monster.speed || {};
-  let speedString = "";
-  if (walk) {
-    speedString += `Walk: ${walk === undefined ? '-' : walk}`;
-    if (swim !== undefined || hover !== undefined) speedString += ", ";
-  }
-  if (swim) {
-    speedString += `Swim: ${swim}`;
-    if (hover) speedString += ", ";
-  }
-  if (hover) {
-    speedString += `Hover: ${hover}`;
-  }
-  return speedString;
-}
-
-// The code above is a function to create a string dor the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
-
-function getSenses(monster) {
-  if (!monster?.senses) return "";
-  const senseEntries = Object.entries(monster.senses).map(([sense, value]) => {
-    switch (sense) {
-      case "passive_perception":
-        return ["Passive Perception", value];
-      default:
-        return [sense, value];
+  function getSpeed(monster) {
+    const { walk = "", swim = "", hover = "" } = monster.speed || {};
+    let speedString = "";
+    if (walk) {
+      speedString += `Walk: ${walk === undefined ? "-" : walk}`;
+      if (swim !== undefined || hover !== undefined) speedString += ", ";
     }
-  });
-  return senseEntries.map(([sense, value]) => `${sense}: ${value}`).join(", ");
-}
+    if (swim) {
+      speedString += `Swim: ${swim}`;
+      if (hover) speedString += ", ";
+    }
+    if (hover) {
+      speedString += `Hover: ${hover}`;
+    }
+    return speedString;
+  }
 
-// The switch case from the code above was taken from StackOverflow
+  // The code above is a function to create a string dor the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
 
-function getConditionImmunities(monster) {
-  if (!monster?.condition_immunities) return "";
-  const immunities = monster.condition_immunities.map((condition) => {
-    return condition.name;
-  });
-  return `${immunities.join(", ")}`;
-}
+  function getSenses(monster) {
+    if (!monster?.senses) return "";
+    const senseEntries = Object.entries(monster.senses).map(
+      ([sense, value]) => {
+        switch (sense) {
+          case "passive_perception":
+            return ["Passive Perception", value];
+          default:
+            return [sense, value];
+        }
+      }
+    );
+    return senseEntries
+      .map(([sense, value]) => `${sense}: ${value}`)
+      .join(", ");
+  }
+
+  // The switch case from the code above was taken from StackOverflow
+
+  function getConditionImmunities(monster) {
+    if (!monster?.condition_immunities) return "";
+    const immunities = monster.condition_immunities.map((condition) => {
+      return condition.name;
+    });
+    return `${immunities.join(", ")}`;
+  }
 
   return (
     <div className="stats-table">
@@ -130,9 +134,9 @@ function getConditionImmunities(monster) {
       </div>
 
       <div>
-      <span>Senses: </span>
-      <span>{getSenses(monster) || "-"}</span>
-    </div>
+        <span>Senses: </span>
+        <span>{getSenses(monster) || "-"}</span>
+      </div>
 
       <div>
         <span>Damage Vulnerabilities: </span>
@@ -140,9 +144,13 @@ function getConditionImmunities(monster) {
       </div>
 
       <div>
-  <span>Damage Resistances: </span>
-  <span>{monster.damage_resistances ? monster.damage_resistances.join(", ") : "-"}</span>
-</div>
+        <span>Damage Resistances: </span>
+        <span>
+          {monster.damage_resistances
+            ? monster.damage_resistances.join(", ")
+            : "-"}
+        </span>
+      </div>
 
       <div>
         <span>Damage Immunities: </span>
@@ -150,8 +158,8 @@ function getConditionImmunities(monster) {
       </div>
 
       <div>
-       <span>Condition Immunities: </span>
-       <span>{getConditionImmunities(monster) || "-"} </span>
+        <span>Condition Immunities: </span>
+        <span>{getConditionImmunities(monster) || "-"} </span>
       </div>
     </div>
   );
