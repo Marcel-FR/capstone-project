@@ -26,7 +26,22 @@ function getSpeed(monster) {
   return speedString;
 }
 
-//The code above is a function to create a string dor the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
+// The code above is a function to create a string dor the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
+
+function getSenses(monster) {
+  if (!monster?.senses) return "";
+  const senseEntries = Object.entries(monster.senses).map(([sense, value]) => {
+    switch (sense) {
+      case "passive_perception":
+        return ["Passive Perception", value];
+      default:
+        return [sense, value];
+    }
+  });
+  return senseEntries.map(([sense, value]) => `${sense}: ${value}`).join(", ");
+}
+
+// The switch case from the code above was taken from StackOverflow
 
   return (
     <div className="stats-table">
@@ -95,6 +110,31 @@ function getSpeed(monster) {
         <span>Challenge Rating: </span>
         <span>{monster.challenge_rating || "-"}</span>
       </div>
+
+      <div>
+        <span>Experience: </span>
+        <span>{monster.xp || "-"}</span>
+      </div>
+
+      <div>
+        <span>Damage Vulnerabilities: </span>
+        <span>{monster.damage_vulnerabilities || "-"}</span>
+      </div>
+
+      <div>
+        <span>Damage Resistances: </span>
+        <span>{monster.damage_resistances || "-"}</span>
+      </div>
+
+      <div>
+        <span>Damage Immunities: </span>
+        <span>{monster.damage_immunities || "-"}</span>
+      </div>
+
+      <div>
+      <span>Senses: </span>
+      <span>{getSenses(monster) || "-"}</span>
+    </div>
     </div>
   );
 }
