@@ -43,11 +43,19 @@ function getSenses(monster) {
 
 // The switch case from the code above was taken from StackOverflow
 
+function getConditionImmunities(monster) {
+  if (!monster?.condition_immunities) return "";
+  const immunities = monster.condition_immunities.map((condition) => {
+    return condition.name;
+  });
+  return `${immunities.join(", ")}`;
+}
+
   return (
     <div className="stats-table">
       <div>
         <span>Armor Class: </span>
-        <span>{getArmorClass(monster)}</span>
+        <span>{getArmorClass(monster) || "-"}</span>
       </div>
 
       <div>
@@ -107,6 +115,11 @@ function getSenses(monster) {
       </div>
 
       <div>
+        <span>Languages: </span>
+        <span>{monster.languages || "-"}</span>
+      </div>
+
+      <div>
         <span>Challenge Rating: </span>
         <span>{monster.challenge_rating || "-"}</span>
       </div>
@@ -117,14 +130,19 @@ function getSenses(monster) {
       </div>
 
       <div>
+      <span>Senses: </span>
+      <span>{getSenses(monster) || "-"}</span>
+    </div>
+
+      <div>
         <span>Damage Vulnerabilities: </span>
         <span>{monster.damage_vulnerabilities || "-"}</span>
       </div>
 
       <div>
-        <span>Damage Resistances: </span>
-        <span>{monster.damage_resistances || "-"}</span>
-      </div>
+  <span>Damage Resistances: </span>
+  <span>{monster.damage_resistances ? monster.damage_resistances.join(", ") : "-"}</span>
+</div>
 
       <div>
         <span>Damage Immunities: </span>
@@ -132,9 +150,9 @@ function getSenses(monster) {
       </div>
 
       <div>
-      <span>Senses: </span>
-      <span>{getSenses(monster) || "-"}</span>
-    </div>
+       <span>Condition Immunities: </span>
+       <span>{getConditionImmunities(monster) || "-"} </span>
+      </div>
     </div>
   );
 }
