@@ -55,8 +55,40 @@ export default function StatsTable(props) {
     return `${immunities.join(", ")}`;
   }
 
+  function getMonsterActions({ actions = [] } = {}) {
+    if (!actions.length) return "";
+
+    return (
+      <div>
+        {actions.map((action, index) => (
+          <div key={index}>
+            <h4>{action.name}</h4>
+            <p>{action.desc}</p>
+            {action.attack_bonus && <p>Attack Bonus: {action.attack_bonus}</p>}
+            {action.dc && (
+              <p>
+                DC: {action.dc.dc_value} ({action.dc.dc_type.name})
+              </p>
+            )}
+            {action.damage && (
+              <p>
+                Damage:{" "}
+                {action.damage.map(
+                  (dmg, i) =>
+                    `${dmg.damage_dice} ${
+                      dmg.damage_type ? dmg.damage_type.name : ""
+                    }`
+                )}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="stats-table">
+    <div>
       <div>
         <span>Armor Class: </span>
         <span>{getArmorClass(monster) || "-"}</span>
@@ -160,6 +192,10 @@ export default function StatsTable(props) {
       <div>
         <span>Condition Immunities: </span>
         <span>{getConditionImmunities(monster) || "-"} </span>
+      </div>
+
+      <div>
+        <span>{getMonsterActions(monster)} </span>
       </div>
     </div>
   );
