@@ -55,6 +55,22 @@ export default function StatsTable(props) {
     return `${immunities.join(", ")}`;
   }
 
+  function stringifyDamage (dmg) {
+    return `${dmg.damage_dice} ${dmg.damage_type ? dmg.damage_type.name : ''}`
+  }
+  
+  function stringifyDamageChoice (choice) {
+    return choice.from.options
+      .map(dmg => `${dmg.damage_dice} ${dmg.damage_type.name}` + (dmg.notes ? ` (${dmg.notes})` : ''))
+      .join(' or ')
+  }
+  
+  function stringifyDamageList (actionDamage) {
+    return actionDamage
+      .map(dmg => dmg.choose ? stringifyDamageChoice(dmg) : stringifyDamage(dmg))
+      .join(' + ')
+  }
+
   function getMonsterActions({ actions = [] } = {}) {
     if (!actions.length) return "";
 
@@ -73,12 +89,7 @@ export default function StatsTable(props) {
             {action.damage && (
               <p>
                 Damage:{" "}
-                {action.damage.map(
-                  (dmg, i) =>
-                    `${dmg.damage_dice} ${
-                      dmg.damage_type ? dmg.damage_type.name : ""
-                    }`
-                )}
+                {stringifyDamageList(action.damage)}
               </p>
             )}
           </div>
