@@ -10,23 +10,28 @@ export default function StatsTable(props) {
   // The code above returns the armor class of a monster if available. If it's not available, it will return an empty string
 
   function getSpeed(monster) {
-    const { walk = "", swim = "", hover = "" } = monster.speed || {};
-    let speedString = "";
+    const { walk = "", swim = "", fly = "", hover = "" } = monster.speed || {};
+    let speedString = "Speed: ";
+  
     if (walk) {
-      speedString += `Walk: ${walk === undefined ? "-" : walk}`;
-      if (swim !== undefined || hover !== undefined) speedString += ", ";
+      speedString += `${walk}`;
+      if (swim || fly || hover) speedString += ", ";
+    }
+    if (fly) {
+      speedString += `fly ${fly}`;
+      if (swim || hover) speedString += ", ";
     }
     if (swim) {
-      speedString += `Swim: ${swim}`;
+      speedString += `swim ${swim}`;
       if (hover) speedString += ", ";
     }
-    if (hover) {
+    if (hover === true) {
+      speedString += "(hover)";
+    } else if (hover) {
       speedString += `Hover: ${hover}`;
     }
     return speedString;
   }
-
-  // The code above is a function to create a string for the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
 
   function getSenses(monster) {
     if (!monster?.senses) return "";
@@ -217,7 +222,6 @@ export default function StatsTable(props) {
       </div>
 
       <div>
-        <span>Speed: </span>
         <span>{getSpeed(monster) || "-"}</span>
       </div>
 
