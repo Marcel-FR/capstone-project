@@ -26,7 +26,7 @@ export default function StatsTable(props) {
     return speedString;
   }
 
-  // The code above is a function to create a string dor the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
+  // The code above is a function to create a string for the monster's speed data, which concatenates different types of speed (walking, swimming, hovering)
 
   function getSenses(monster) {
     if (!monster?.senses) return "";
@@ -47,13 +47,70 @@ export default function StatsTable(props) {
 
   // The switch case from the code above was taken from StackOverflow
 
+  function getDamageVulnerabilities(monster) {
+    if (!monster.damage_vulnerabilities || monster.damage_vulnerabilities.length === 0) {
+      return null;
+    }
+  
+    return (
+      <div>
+        <span>Damage Vulnerabilities: </span>
+        <span>
+          {monster.damage_vulnerabilities
+            ? monster.damage_vulnerabilities.join(", ")
+            : "-"}
+        </span>
+      </div>
+    );
+  }
+
+  function getDamageResistances(monster) {
+    if (!monster.damage_resistances || monster.damage_resistances.length === 0) {
+      return null;
+    }
+  
+    return (
+      <div>
+        <span>Damage Resistances: </span>
+        <span>{monster.damage_resistances
+            ? monster.damage_resistances.join(", ")
+            : "-"}</span>
+      </div>
+    );
+  }
+
+  function getDamageImmunities(monster) {
+    if (!monster.damage_immunities || monster.damage_immunities.length === 0) {
+      return null;
+    }
+  
+    return (
+      <div>
+        <span>Damage Immunities: </span>
+        <span>{monster.damage_immunities
+            ? monster.damage_immunities.join(", ")
+            : "-"}</span>
+      </div>
+    );
+  }
+
   function getConditionImmunities(monster) {
-    if (!monster?.condition_immunities) return "";
-    const immunities = monster.condition_immunities.map((condition) => {
+    if (!monster.condition_immunities || monster.condition_immunities.length === 0) {
+      return null;
+    }
+  
+    const conditionImmunities = monster.condition_immunities.map((condition) => {
       return condition.name;
     });
-    return `${immunities.join(", ")}`;
+  
+    return (
+      <div>
+        <span>Condition Immunities: </span>
+        <span>{conditionImmunities.join(", ")}</span>
+      </div>
+    );
   }
+  
 
   function stringifyDamage (dmg) {
     return `${dmg.damage_dice} ${dmg.damage_type ? dmg.damage_type.name : ''}`
@@ -76,6 +133,7 @@ export default function StatsTable(props) {
 
     return (
       <div>
+        <h2>Actions:</h2>
         {actions.map((action, index) => (
           <div key={index}>
             <h4>{action.name}</h4>
@@ -103,6 +161,7 @@ export default function StatsTable(props) {
 
     return (
       <div>
+        <h2>Special Abilities:</h2>
         {special_abilities.map((action, index) => (
           <div key={index}>
             <h4>{action.name}</h4>
@@ -125,6 +184,7 @@ export default function StatsTable(props) {
   
     return (
       <div>
+        <h2>Legendary Actions:</h2>
         <p>The monster can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature&apos;s turn. The monster regains spent legendary actions at the start of its turn.</p>
         {legendary_actions.map((action, index) => (
           <div key={index}>
@@ -227,41 +287,30 @@ export default function StatsTable(props) {
       </div>
 
       <div>
-        <span>Damage Vulnerabilities: </span>
-        <span>{monster.damage_vulnerabilities || "-"}</span>
+      <span>{getDamageVulnerabilities(monster)} </span>
       </div>
 
       <div>
-        <span>Damage Resistances: </span>
-        <span>
-          {monster.damage_resistances
-            ? monster.damage_resistances.join(", ")
-            : "-"}
-        </span>
+      <span>{getDamageResistances(monster)} </span>
       </div>
 
       <div>
-        <span>Damage Immunities: </span>
-        <span>{monster.damage_immunities || "-"}</span>
+      <span>{getDamageImmunities(monster)} </span>
       </div>
 
       <div>
-        <span>Condition Immunities: </span>
-        <span>{getConditionImmunities(monster) || "-"} </span>
+        <span>{getConditionImmunities(monster)} </span>
       </div>
 
       <div>
-        <h2>Special Abilities:</h2>
         <span>{getSpecialAbilities(monster)}</span>
       </div>
 
       <div>
-        <h2>Actions:</h2>
         <span>{getMonsterActions(monster)}</span>
       </div>
 
       <div>
-        <h2>Legendary Actions:</h2>
         <span>{getLegendaryActions(monster)}</span>
       </div>
     </div>
