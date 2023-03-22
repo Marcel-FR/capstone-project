@@ -98,6 +98,51 @@ export default function StatsTable(props) {
     );
   }
 
+  function getSpecialAbilities({ special_abilities = [] } = {}) {
+    if (!special_abilities.length) return "";
+
+    return (
+      <div>
+        {special_abilities.map((action, index) => (
+          <div key={index}>
+            <h4>{action.name}</h4>
+            <p>{action.desc}</p>
+            {action.attack_bonus && <p>Attack Bonus: {action.attack_bonus}</p>}
+            {action.damage && (
+              <p>
+                Damage:{" "}
+                {stringifyDamageList(action.damage)}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  function getLegendaryActions({ legendary_actions = [] } = {}) {
+    if (!legendary_actions.length) return "";
+  
+    return (
+      <div>
+        <p>The monster can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature&apos;s turn. The monster regains spent legendary actions at the start of its turn.</p>
+        {legendary_actions.map((action, index) => (
+          <div key={index}>
+            <h4>{action.name}</h4>
+            <p>{action.desc}</p>
+            {action.attack_bonus && <p>Attack Bonus: {action.attack_bonus}</p>}
+            {action.damage && (
+              <p>
+                Damage:{" "}
+                {stringifyDamageList(action.damage)}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div>
       <div>
@@ -206,7 +251,18 @@ export default function StatsTable(props) {
       </div>
 
       <div>
-        <span>{getMonsterActions(monster)} </span>
+        <h2>Special Abilities:</h2>
+        <span>{getSpecialAbilities(monster)}</span>
+      </div>
+
+      <div>
+        <h2>Actions:</h2>
+        <span>{getMonsterActions(monster)}</span>
+      </div>
+
+      <div>
+        <h2>Legendary Actions:</h2>
+        <span>{getLegendaryActions(monster)}</span>
       </div>
     </div>
   );
