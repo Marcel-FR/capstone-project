@@ -1,8 +1,17 @@
-import { getArmorClass, getSpeed, getSenses, getDamageVulnerabilities, getDamageResistances, getDamageImmunities, getConditionImmunities, getMonsterActions, getSpecialAbilities, getLegendaryActions } from "./informationPageFunctions";
+import {
+  getArmorClass,
+  getSpeed,
+  getSenses,
+  getDamageVulnerabilities,
+  getDamageResistances,
+  getDamageImmunities,
+  getConditionImmunities,
+  getMonsterActions,
+  getSpecialAbilities,
+  getLegendaryActions,
+} from "./informationPageFunctions";
 
-export default function InformationPage(props) {
-  const { monster } = props;
-
+export default function InformationPage({ monster }) {
   return (
     <div>
       <div>
@@ -86,15 +95,15 @@ export default function InformationPage(props) {
       </div>
 
       <div>
-      <span>{getDamageVulnerabilities(monster)} </span>
+        <span>{getDamageVulnerabilities(monster)} </span>
       </div>
 
       <div>
-      <span>{getDamageResistances(monster)} </span>
+        <span>{getDamageResistances(monster)} </span>
       </div>
 
       <div>
-      <span>{getDamageImmunities(monster)} </span>
+        <span>{getDamageImmunities(monster)} </span>
       </div>
 
       <div>

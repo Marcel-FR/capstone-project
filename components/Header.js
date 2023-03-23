@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { backArrowIcon, searchIcon } from "../assets/svgFiles";
 
-
 const StyledHeader = styled.header`
   position: relative;
   width: 375px;
@@ -19,7 +18,6 @@ const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
   margin: 0 125px 0 0;
-
 `;
 
 const StyledBackButton = styled.button`
@@ -28,7 +26,7 @@ const StyledBackButton = styled.button`
   outline: none;
 `;
 
-const Icon = styled( backArrowIcon)`
+const Icon = styled(backArrowIcon)`
   fill: #f5e5c3;
   margin: 5px 0 0 15px;
   vertical-align: middle;

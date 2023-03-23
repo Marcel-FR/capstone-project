@@ -58,7 +58,7 @@ export default function BestiaryPage() {
   return (
     <>
       <main>
-      <Header pageTitle={"Bestiary"}/>
+        <Header pageTitle={"Bestiary"} />
         <MonsterList>
           {monstersList.map((monster) => (
             <MonsterName
