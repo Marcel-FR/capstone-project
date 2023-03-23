@@ -1,5 +1,27 @@
+/* import { useState, useEffect } from 'react';
+   import Image from 'next/image'; */
+
 export default function StatsTable(props) {
   const { monster } = props;
+
+ /* function getMonsterImage({ image = [] } = {}) {
+    if (!image.length) {
+      return (
+        <div style={{ width: 375, height: 270, backgroundColor: "#303134" }} />
+      );
+    }
+  
+    return (
+      <div>
+        <Image
+          src={`https://www.dnd5eapi.co${monster.image.replace(".jpg", ".png")}`}
+          alt={monster.name}
+          width={375}
+          height={270}
+        />
+      </div>
+    );
+  } */
 
   function getArmorClass(monster) {
     if (!monster?.armor_class?.length) return "";
@@ -320,3 +342,7 @@ export default function StatsTable(props) {
     </div>
   );
 }
+
+/* <div>
+<span>{getMonsterImage(monster)}</span>
+</div> */
