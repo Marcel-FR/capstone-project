@@ -6,6 +6,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
+    domains: ["www.dnd5eapi.co"],
     remotePatterns: [
       {
         protocol: "https",
