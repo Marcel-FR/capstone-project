@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import MonsterHeader from "@/components/bestiaryPage/monsterHeader";
-import StatsTable from "@/components/bestiaryPage/statsTable";
+import InformationPage from "@/components/bestiaryPage/informationPage";
 
 const Monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
@@ -19,7 +19,7 @@ export default function BestiaryIdPage() {
 return (
     <>
       <MonsterHeader monster={monsterData} />
-      <StatsTable monster={monsterData} />
+      <InformationPage monster={monsterData} />
     </>
   );
 }
