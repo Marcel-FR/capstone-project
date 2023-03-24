@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { backArrowIcon, searchIcon } from "../assets/svgFiles";
+import { backArrowIcon, searchIcon, editIcon, addIcon } from "../assets/svgFiles";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -17,11 +17,17 @@ const StyledHeader = styled.header`
 const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
-  margin: 5px 115px 9px 0;
+  margin: 0px 115px 9px 0;
   font-size: 35px;
 `;
 
-const StyledBackButton = styled.button`
+const StyledButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+`;
+
+const StyledEditButton = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
@@ -29,8 +35,7 @@ const StyledBackButton = styled.button`
 
 const BackArrow = styled(backArrowIcon)`
   fill: #f5e5c3;
-  margin: 5px 0 8px 15px;
-  vertical-align: middle;
+  margin: 5px 0 8px 20px;
 `;
 
 /* const Search = styled( searchIcon)`
@@ -39,6 +44,13 @@ const BackArrow = styled(backArrowIcon)`
   vertical-align: middle;
 `; */
 
+const Add = styled(addIcon)`
+  position: absolute;
+  fill: #f5e5c3;
+  margin: 5px 0 8px 310px;
+  height: 35px;
+`;
+
 // Styling was taken from StackOverflow
 
 export const Header = ({ pageTitle }) => {
@@ -46,11 +58,8 @@ export const Header = ({ pageTitle }) => {
 
   return (
     <StyledHeader>
-      <Link href="/">
-        <StyledBackButton>
           <BackArrow onClick={() => router.push("/")} />
-        </StyledBackButton>
-      </Link>
+        <Add />
       <StyledTitle>{pageTitle}</StyledTitle>
     </StyledHeader>
   );
