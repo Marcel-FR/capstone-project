@@ -67,7 +67,7 @@ export default function BestiaryPage() {
             >
               <div>{monster.name}</div>
               <div className="monster-details">
-                <div className="monster-type">Type: {monster.type}</div>
+                <div className="monster-type">{monster.type}</div>
                 <div className="monster-cr">CR: {monster.challenge_rating}</div>
               </div>
             </MonsterName>
