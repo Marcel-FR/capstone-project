@@ -23,7 +23,7 @@ export function getLanguages(monster) {
 
 export function getSpeed(monster) {
   const { walk = "", swim = "", fly = "", hover = "" } = monster.speed || {};
-  let speedString = "Speed: ";
+  let speedString = "";
 
   if (walk) {
     speedString += `${walk}`;
