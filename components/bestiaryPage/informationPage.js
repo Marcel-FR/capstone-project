@@ -2,6 +2,7 @@ import {
   getArmorClass,
   getSpeed,
   getSenses,
+  getLanguages,
   getDamageVulnerabilities,
   getDamageResistances,
   getDamageImmunities,
@@ -10,121 +11,128 @@ import {
   getSpecialAbilities,
   getLegendaryActions,
 } from "./informationPageFunctions";
+import {
+  StatBlock,
+  OrangeBorder,
+  OrangeBorderBottom,
+  CreatureHeadingH1,
+  CreatureHeadingH2,
+  PropertyLine,
+  PropertyLineP,
+  PropertyLineH4,
+  PropertyBlock,
+  PropertyBlockP,
+  Abilities,
+  AbilitiesDiv,
+  AbilitiesH4,
+  AbilitiesP,
+  SeparationLine,
+} from "./informationPageStyling";
+import { BackArrow2 } from "./informationPageStyling";
+import { useRouter } from "next/router";
 
 export default function InformationPage({ monster }) {
+  const router = useRouter();
   return (
-    <div>
-      <div>
-        <span>Armor Class: </span>
-        <span>{getArmorClass(monster) || "-"}</span>
-      </div>
+    <StatBlock>
+      <OrangeBorder />
+      <CreatureHeadingH1>{monster.name}</CreatureHeadingH1>
+      <CreatureHeadingH2>
+        {monster.size} {monster.type}, {monster.alignment}
+      </CreatureHeadingH2>
+      <BackArrow2 onClick={() => router.push("/bestiary")} />
+      <SeparationLine>
+        <polyline points="0,0 400,2.5 0,5"></polyline>
+      </SeparationLine>
 
-      <div>
-        <span>Hit Points: </span>
-        <span>{monster.hit_points || "-"}</span>
-        {monster.hit_dice && <span>({monster.hit_dice})</span>}
-      </div>
+      <PropertyLine>
+        <PropertyLineH4>Armor Class </PropertyLineH4>
+        <PropertyLineP>{getArmorClass(monster)}</PropertyLineP>
+      </PropertyLine>
+      <PropertyLine>
+        <PropertyLineH4>Hit Points</PropertyLineH4>
+        <PropertyLineP>
+          {" "}
+          {monster.hit_points}{" "}
+          {monster.hit_dice && <span>({monster.hit_dice})</span>}
+        </PropertyLineP>
+      </PropertyLine>
+      <PropertyLine>
+        <PropertyLineH4>Speed</PropertyLineH4>
+        <PropertyLineP> {getSpeed(monster)}</PropertyLineP>
+      </PropertyLine>
 
-      <div>
-        <span>{getSpeed(monster) || "-"}</span>
-      </div>
+      <SeparationLine>
+        <polyline points="0,0 400,2.5 0,5"></polyline>
+      </SeparationLine>
 
-      <div>
-        <span>Size: </span>
-        <span>{monster.size || "-"}</span>
-      </div>
+      <Abilities>
+        <AbilitiesDiv>
+          <AbilitiesH4>STR</AbilitiesH4>
+          <AbilitiesP>{monster.strength}</AbilitiesP>
+        </AbilitiesDiv>
+        <AbilitiesDiv>
+          <AbilitiesH4>DEX</AbilitiesH4>
+          <AbilitiesP>{monster.dexterity}</AbilitiesP>
+        </AbilitiesDiv>
+        <AbilitiesDiv>
+          <AbilitiesH4>CON</AbilitiesH4>
+          <AbilitiesP>{monster.constitution}</AbilitiesP>
+        </AbilitiesDiv>
+        <AbilitiesDiv>
+          <AbilitiesH4>INT</AbilitiesH4>
+          <AbilitiesP>{monster.intelligence}</AbilitiesP>
+        </AbilitiesDiv>
+        <AbilitiesDiv>
+          <AbilitiesH4>WIS</AbilitiesH4>
+          <AbilitiesP>{monster.wisdom}</AbilitiesP>
+        </AbilitiesDiv>
+        <AbilitiesDiv>
+          <AbilitiesH4>CHA</AbilitiesH4>
+          <AbilitiesP>{monster.charisma}</AbilitiesP>
+        </AbilitiesDiv>
+      </Abilities>
 
-      <div>
-        <span>Type: </span>
-        <span>{monster.type || "-"}</span>
-      </div>
+      <SeparationLine>
+        <polyline points="0,0 400,2.5 0,5"></polyline>
+      </SeparationLine>
 
-      <div>
-        <span>Alignment: </span>
-        <span>{monster.alignment || "-"}</span>
-      </div>
+      <>{getDamageImmunities(monster)}</>
+      <>{getDamageVulnerabilities(monster)}</>
+      <>{getDamageResistances(monster)}</>
+      <>{getConditionImmunities(monster)}</>
 
-      <div>
-        <span>Strength: </span>
-        <span>{monster.strength || "-"}</span>
-      </div>
+      <PropertyLine>
+        <PropertyLineH4>Senses</PropertyLineH4>
+        <PropertyLineP> {getSenses(monster)}</PropertyLineP>
+      </PropertyLine>
 
-      <div>
-        <span>Dexterity: </span>
-        <span>{monster.dexterity || "-"}</span>
-      </div>
+      <PropertyLine>
+        <PropertyLineH4>Languages</PropertyLineH4>
+        <PropertyLineP> {getLanguages(monster)}</PropertyLineP>
+      </PropertyLine>
 
-      <div>
-        <span>Constitution: </span>
-        <span>{monster.constitution || "-"}</span>
-      </div>
+      <PropertyLine>
+        <PropertyLineH4>Challenge</PropertyLineH4>
+        <PropertyLineP>
+          {" "}
+          {monster.challenge_rating} ({monster.xp} XP)
+        </PropertyLineP>
+      </PropertyLine>
 
-      <div>
-        <span>Intelligence: </span>
-        <span>{monster.intelligence || "-"}</span>
-      </div>
+      <SeparationLine>
+        <polyline points="0,0 400,2.5 0,5"></polyline>
+      </SeparationLine>
 
-      <div>
-        <span>Wisdom: </span>
-        <span>{monster.wisdom || "-"}</span>
-      </div>
+      <PropertyBlock>
+        <PropertyBlockP>{getSpecialAbilities(monster)}</PropertyBlockP>
+      </PropertyBlock>
 
-      <div>
-        <span>Charisma: </span>
-        <span>{monster.charisma || "-"}</span>
-      </div>
+      <>{getMonsterActions(monster)}</>
 
-      <div>
-        <span>Languages: </span>
-        <span>{monster.languages || "-"}</span>
-      </div>
+      <>{getLegendaryActions(monster)}</>
 
-      <div>
-        <span>Challenge Rating: </span>
-        <span>{monster.challenge_rating || "-"}</span>
-      </div>
-
-      <div>
-        <span>Experience: </span>
-        <span>{monster.xp || "-"}</span>
-      </div>
-
-      <div>
-        <span>Senses: </span>
-        <span>{getSenses(monster) || "-"}</span>
-      </div>
-
-      <div>
-        <span>{getDamageVulnerabilities(monster)} </span>
-      </div>
-
-      <div>
-        <span>{getDamageResistances(monster)} </span>
-      </div>
-
-      <div>
-        <span>{getDamageImmunities(monster)} </span>
-      </div>
-
-      <div>
-        <span>{getConditionImmunities(monster)} </span>
-      </div>
-
-      <div>
-        <span>{getSpecialAbilities(monster)}</span>
-      </div>
-
-      <div>
-        <span>{getMonsterActions(monster)}</span>
-      </div>
-
-      <div>
-        <span>{getLegendaryActions(monster)}</span>
-      </div>
-    </div>
+      <OrangeBorderBottom />
+    </StatBlock>
   );
 }
-
-/* <div>
-<span>{getMonsterImage(monster)}</span>
-</div> */
