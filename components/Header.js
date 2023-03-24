@@ -17,7 +17,8 @@ const StyledHeader = styled.header`
 const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
-  margin: 0 125px 0 0;
+  margin: 5px 115px 9px 0;
+  font-size: 35px;
 `;
 
 const StyledBackButton = styled.button`
@@ -26,9 +27,9 @@ const StyledBackButton = styled.button`
   outline: none;
 `;
 
-const Icon = styled(backArrowIcon)`
+const BackArrow = styled(backArrowIcon)`
   fill: #f5e5c3;
-  margin: 5px 0 0 15px;
+  margin: 5px 0 8px 15px;
   vertical-align: middle;
 `;
 
@@ -47,7 +48,7 @@ export const Header = ({ pageTitle }) => {
     <StyledHeader>
       <Link href="/">
         <StyledBackButton>
-          <Icon onClick={() => router.push("/")} />
+          <BackArrow onClick={() => router.push("/")} />
         </StyledBackButton>
       </Link>
       <StyledTitle>{pageTitle}</StyledTitle>
