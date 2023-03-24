@@ -18,7 +18,6 @@ export default function BestiaryIdPage() {
 
   return (
     <>
-      <MonsterHeader monster={monsterData} />
       <InformationPage monster={monsterData} />
     </>
   );
