@@ -28,7 +28,7 @@ import {
   AbilitiesP,
   SeparationLine,
 } from "./informationPageStyling";
-import { BackArrow2 } from "./informationPageStyling";
+import { CloseIcon } from "./informationPageStyling";
 import { useRouter } from "next/router";
 
 export default function InformationPage({ monster }) {
@@ -40,7 +40,7 @@ export default function InformationPage({ monster }) {
       <CreatureHeadingH2>
         {monster.size} {monster.type}, {monster.alignment}
       </CreatureHeadingH2>
-      <BackArrow2 onClick={() => router.push("/bestiary")} />
+      <CloseIcon onClick={() => router.push("/bestiary")} />
       <SeparationLine>
         <polyline points="0,0 400,2.5 0,5"></polyline>
       </SeparationLine>
