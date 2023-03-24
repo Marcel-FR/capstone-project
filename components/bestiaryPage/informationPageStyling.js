@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { backArrowIcon } from "@/assets/svgFiles";
+import { closeIcon } from "@/assets/svgFiles";
 
 export const StatBlock = styled.div`
   text-align: left;
@@ -63,12 +63,13 @@ export const CreatureHeadingH2 = styled.h2`
   color: black;
 `;
 
-export const BackArrow2 = styled(backArrowIcon)`
+export const CloseIcon = styled(closeIcon)`
   fill: black;
-  margin: -45px 0px 0px 315px;
+  margin: -45px 0px 0px 305px;
   vertical-align: middle;
-  position: absolute;
+  position: fixed;
   color: black;
+  height: 35px;
 `;
 
 export const PropertyLine = styled.div`
