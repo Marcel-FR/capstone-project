@@ -1,26 +1,24 @@
-/* export function getMonsterImage({ image = [] } = {}) {
-    if (!image.length) {
-      return (
-        <div style={{ width: 375, height: 270, backgroundColor: "#303134" }} />
-      );
-    }
-  
-    return (
-      <div>
-        <Image
-          src={`https://www.dnd5eapi.co${monster.image.replace(".jpg", ".png")}`}
-          alt={monster.name}
-          width={375}
-          height={270}
-        />
-      </div>
-    );
-  } */
+import {
+  PropertyLineH4,
+  PropertyLine,
+  PropertyLineP,
+  Actions,
+  ActionsH3,
+  ActionsP,
+} from "./informationPageStyling";
 
 export function getArmorClass(monster) {
   if (!monster?.armor_class?.length) return "";
   const { value = "", type = "" } = monster.armor_class[0] || {};
   return `${value}${type ? ` (${type})` : ""}`;
+}
+
+export function getLanguages(monster) {
+  if (!monster.languages) {
+    return <span>Cannot understand any language</span>;
+  }
+
+  return <span>{monster.languages}</span>;
 }
 
 export function getSpeed(monster) {
@@ -71,14 +69,14 @@ export function getDamageVulnerabilities(monster) {
   }
 
   return (
-    <div>
-      <span>Damage Vulnerabilities: </span>
-      <span>
+    <PropertyLine>
+      <PropertyLineH4>Damage Vulnerabilities </PropertyLineH4>
+      <PropertyLineP>
         {monster.damage_vulnerabilities
           ? monster.damage_vulnerabilities.join(", ")
           : "-"}
-      </span>
-    </div>
+      </PropertyLineP>
+    </PropertyLine>
   );
 }
 
@@ -88,14 +86,14 @@ export function getDamageResistances(monster) {
   }
 
   return (
-    <div>
-      <span>Damage Resistances: </span>
-      <span>
+    <PropertyLine>
+      <PropertyLineH4>Damage Resistances </PropertyLineH4>
+      <PropertyLineP>
         {monster.damage_resistances
           ? monster.damage_resistances.join(", ")
           : "-"}
-      </span>
-    </div>
+      </PropertyLineP>
+    </PropertyLine>
   );
 }
 
@@ -105,12 +103,12 @@ export function getDamageImmunities(monster) {
   }
 
   return (
-    <div>
-      <span>Damage Immunities: </span>
-      <span>
+    <PropertyLine>
+      <PropertyLineH4>Damage Immunities </PropertyLineH4>
+      <PropertyLineP>
         {monster.damage_immunities ? monster.damage_immunities.join(", ") : "-"}
-      </span>
-    </div>
+      </PropertyLineP>
+    </PropertyLine>
   );
 }
 
@@ -127,10 +125,10 @@ export function getConditionImmunities(monster) {
   });
 
   return (
-    <div>
-      <span>Condition Immunities: </span>
-      <span>{conditionImmunities.join(", ")}</span>
-    </div>
+    <PropertyLine>
+      <PropertyLineH4>Condition Immunities </PropertyLineH4>
+      <PropertyLineP>{conditionImmunities.join(", ")}</PropertyLineP>
+    </PropertyLine>
   );
 }
 
@@ -160,10 +158,10 @@ export function getMonsterActions({ actions = [] } = {}) {
   if (!actions.length) return "";
 
   return (
-    <div>
-      <h2>Actions:</h2>
+    <Actions>
+      <ActionsH3>Actions</ActionsH3>
       {actions.map((action, index) => (
-        <div key={index}>
+        <ActionsP key={index}>
           <h4>{action.name}</h4>
           <p>{action.desc}</p>
           {action.attack_bonus && <p>Attack Bonus: {action.attack_bonus}</p>}
@@ -173,9 +171,9 @@ export function getMonsterActions({ actions = [] } = {}) {
             </p>
           )}
           {action.damage && <p>Damage: {stringifyDamageList(action.damage)}</p>}
-        </div>
+        </ActionsP>
       ))}
-    </div>
+    </Actions>
   );
 }
 
@@ -184,7 +182,6 @@ export function getSpecialAbilities({ special_abilities = [] } = {}) {
 
   return (
     <div>
-      <h2>Special Abilities:</h2>
       {special_abilities.map((action, index) => (
         <div key={index}>
           <h4>{action.name}</h4>
@@ -201,22 +198,22 @@ export function getLegendaryActions({ legendary_actions = [] } = {}) {
   if (!legendary_actions.length) return "";
 
   return (
-    <div>
-      <h2>Legendary Actions:</h2>
-      <p>
+    <Actions>
+      <ActionsH3>Legendary Actions</ActionsH3>
+      <ActionsP>
         The monster can take 3 legendary actions, choosing from the options
         below. Only one legendary action can be used at a time and only at the
         end of another creature&apos;s turn. The monster regains spent legendary
         actions at the start of its turn.
-      </p>
+      </ActionsP>
       {legendary_actions.map((action, index) => (
-        <div key={index}>
+        <ActionsP key={index}>
           <h4>{action.name}</h4>
           <p>{action.desc}</p>
           {action.attack_bonus && <p>Attack Bonus: {action.attack_bonus}</p>}
           {action.damage && <p>Damage: {stringifyDamageList(action.damage)}</p>}
-        </div>
+        </ActionsP>
       ))}
-    </div>
+    </Actions>
   );
 }
