@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
 const StyledTitle = styled.h1`
   text-align: center;
   color: #f5e5c3;
-  margin: 0px 115px 9px 0;
+  margin: 0px 120px 9px 0;
   font-size: 35px;
 `;
 
@@ -47,7 +47,7 @@ const BackArrow = styled(backArrowIcon)`
 const Add = styled(addIcon)`
   position: absolute;
   fill: #f5e5c3;
-  margin: 5px 0 8px 310px;
+  margin: 5px 0 8px 315px;
   height: 35px;
 `;
 
