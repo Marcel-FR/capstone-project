@@ -58,8 +58,9 @@ export const Header = ({ pageTitle }) => {
 
   return (
     <StyledHeader>
-          <BackArrow onClick={() => router.push("/")} />
-        <Add />
+          <BackArrow 
+          onClick={() => router.push("/")} />
+        <Add onClick={() => router.push("/bestiary/monstercreation")} />
       <StyledTitle>{pageTitle}</StyledTitle>
     </StyledHeader>
   );
