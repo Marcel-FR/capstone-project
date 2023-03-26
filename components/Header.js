@@ -1,7 +1,12 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { backArrowIcon, searchIcon, editIcon, addIcon } from "../assets/svgFiles";
+import {
+  backArrowIcon,
+  searchIcon,
+  editIcon,
+  addIcon,
+} from "../assets/svgFiles";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -58,9 +63,8 @@ export const Header = ({ pageTitle }) => {
 
   return (
     <StyledHeader>
-          <BackArrow 
-          onClick={() => router.push("/")} />
-        <Add onClick={() => router.push("/bestiary/monstercreation")} />
+      <BackArrow onClick={() => router.push("/")} />
+      <Add onClick={() => router.push("/bestiary/monsterCreation")} />
       <StyledTitle>{pageTitle}</StyledTitle>
     </StyledHeader>
   );
