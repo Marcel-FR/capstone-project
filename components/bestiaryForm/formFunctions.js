@@ -63,7 +63,7 @@ export function AlignmentOptions() {
 export function Name() {
   return (
     <>
-      <TitleInput placeholder="Monster Name" type="text" />
+      <TitleInput placeholder="Monster Name" type="text" name="name" />
     </>
   );
 }
@@ -71,7 +71,7 @@ export function Name() {
 export function AC() {
   return (
     <>
-      <FirstStatBlock placeholder="10 (dex)" type="text" />
+      <FirstStatBlock placeholder="10 (dex)" type="text" name="armor_class" />
     </>
   );
 }
@@ -79,7 +79,7 @@ export function AC() {
 export function HP() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. 9 (2d8)" type="text" />
+      <FirstStatBlock placeholder="e.g. 9 (2d8)" type="text" name="hit_points" />
     </>
   );
 }
@@ -87,7 +87,7 @@ export function HP() {
 export function Speed() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. 30ft., fly 60ft., ..." type="text" />
+      <FirstStatBlock placeholder="e.g. 30ft., fly 60ft., ..." type="text" name="speed" />
     </>
   );
 }
@@ -95,7 +95,7 @@ export function Speed() {
 export function STR() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="strength" />
     </>
   );
 }
@@ -103,7 +103,7 @@ export function STR() {
 export function DEX() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="dexterity" />
     </>
   );
 }
@@ -111,7 +111,7 @@ export function DEX() {
 export function CON() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="constitution" />
     </>
   );
 }
@@ -119,7 +119,7 @@ export function CON() {
 export function INT() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="intelligence" />
     </>
   );
 }
@@ -127,7 +127,7 @@ export function INT() {
 export function WIS() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="wisdom" />
     </>
   );
 }
@@ -135,7 +135,7 @@ export function WIS() {
 export function CHA() {
   return (
     <>
-      <SecondStatBlock placeholder="10" type="number" />
+      <SecondStatBlock placeholder="10" type="number" name="charisma" />
     </>
   );
 }
@@ -143,28 +143,28 @@ export function CHA() {
 export function DamageImmunities() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. poison, ..." type="text" />
+      <FirstStatBlock placeholder="e.g. poison, ..." type="text" name="damage_immunities" />
     </>
   );
 }
 export function DamageVulnerabilities() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. lightning, ..." type="text" />
+      <FirstStatBlock placeholder="e.g. lightning, ..." type="text" name="damage_vulnerabilities" />
     </>
   );
 }
 export function DamageResistances() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. piercing, ..." type="text" />
+      <FirstStatBlock placeholder="e.g. piercing, ..." type="text" name="damage_resistances" />
     </>
   );
 }
 export function ConditionImmunities() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. Charmed, ..." type="text" />
+      <FirstStatBlock placeholder="e.g. Charmed, ..." type="text" name="condition_immunities" />
     </>
   );
 }
@@ -172,7 +172,7 @@ export function ConditionImmunities() {
 export function Senses() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. darkvision 60ft., ..." type="text" />
+      <FirstStatBlock placeholder="e.g. darkvision 60ft., ..." type="text" name="senses" />
     </>
   );
 }
@@ -180,7 +180,7 @@ export function Senses() {
 export function Languages() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. Common, ..." type="text" />
+      <FirstStatBlock placeholder="e.g. Common, ..." type="text" name="languages" />
     </>
   );
 }
@@ -188,7 +188,7 @@ export function Languages() {
 export function Challenge() {
   return (
     <>
-      <FirstStatBlock placeholder="e.g. 0.25 (50 XP)" type="text" />
+      <FirstStatBlock placeholder="e.g. 0.25 (50 XP)" type="text" name="challenge_rating" />
     </>
   );
 }
@@ -196,7 +196,7 @@ export function Challenge() {
 export function AbilitiesTitle() {
   return (
     <>
-      <input placeholder="e.g. Amphibious" type="text" />
+      <input placeholder="e.g. Amphibious" type="text" name="special_abilities" />
     </>
   );
 }
@@ -212,7 +212,7 @@ export function AbilitiesDesciption() {
 export function Actions() {
   return (
     <>
-      <input placeholder="e.g. Tail" type="text" />
+      <input placeholder="e.g. Tail" type="text" name="actions" />
     </>
   );
 }
