@@ -52,15 +52,19 @@ export default function BestiaryPage({data}) {
     router.push(`/bestiary/${id}`);
   };
 
-  const [newMonsterData, setNewMonsterData] = useLocalStorageState("monsterData", {defaultValue: [...monsters, data]});
+  const [newMonsterData, setNewMonsterData] = useLocalStorageState("monsterData");
+
   console.log(newMonsterData);
+  console.log(data);
+  setNewMonsterData([...monsters, data]);
+  console.log(monsters);
 
   return (
     <>
       <main>
         <Header pageTitle={"Bestiary"} />
         <MonsterList>
-          {monstersList.map((monster) => (
+          {newMonsterData?.map((monster) => (
             <MonsterName
               key={monster.index}
               onClick={() => handleClick(monster.index)}
