@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const StatBlockForm = styled.form`
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  background: #fdf1dc;
+  padding: 5px 10px 20px;
+  box-shadow: 0 0 1.5em #867453;
+`;
+
 export const TitleInput = styled.input`
   font-family: "Libre Baskerville", "Lora", "Calisto MT", "Bookman Old Style",
     Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter",
