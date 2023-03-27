@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import React from "react";
+import { useRouter } from "next/router";
 import {
   SizeOptions,
   TypeOptions,
@@ -22,10 +21,10 @@ import {
   DamageResistances,
   ConditionImmunities,
   AbilitiesTitle,
-  AbilitiesDesciption,
+  AbilitiesDesciption
 } from "@/components/bestiaryForm/formFunctions";
 import {
-  StatBlock,
+  CloseIcon,
   OrangeBorder,
   OrangeBorderBottom,
   CreatureHeadingH1,
@@ -40,27 +39,53 @@ import {
   AbilitiesH4,
   AbilitiesP,
   SeparationLine,
+  Actions,
+  ActionsH3,
+  ActionsP
 } from "@/components/bestiaryPage/informationPageStyling";
-import { StatSelection } from "@/components/bestiaryForm/formFunctionsStyling";
-import { CloseIcon } from "@/components/bestiaryPage/informationPageStyling";
-import { useRouter } from "next/router";
+import { StatSelection, StatBlockForm } from "@/components/bestiaryForm/formFunctionsStyling";
 
-export default function MonsterCreation() {
+export default function MonsterCreation({onAddFormData}) {
   const router = useRouter();
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formElements = form.elements;
+  const data = {
+    name:formElements.name.value, 
+    size:formElements.size.value, 
+    type:formElements.type.value, armor_class:formElements.armor_class.value, hit_points:formElements.hit_points.value, speed:formElements.speed.value, strength:formElements.strength.value, dexterity:formElements.dexterity.value, constitution:formElements.constitution.value, intelligence:formElements.intelligence.value,
+    wisdom:formElements.wisdom.value, 
+    charisma:formElements.charisma.value, 
+    damage_immunities:formElements.damage_immunities.value, 
+    damage_vulnerabilities:formElements.damage_vulnerabilities.value,
+    damage_resistances:formElements.damage_resistances.value,
+    condition_immunities:formElements.condition_immunities.value,
+    senses:formElements.senses.value,
+    languages:formElements.languages.value,
+    challenge_rating:formElements.challenge_rating.value,
+    special_abilities:formElements.special_abilities.value};
+  onAddFormData(data);
+  form.reset();
+  formElements.name.focus();
+  router.push('/bestiary');
+}
+
   return (
-    <StatBlock>
+    <StatBlockForm onSubmit={handleFormSubmit} action="/bestiary">
       <OrangeBorder />
       <CreatureHeadingH1>
         <Name />
       </CreatureHeadingH1>
       <CreatureHeadingH2>
-        <StatSelection>
+        <StatSelection name="size">
           <SizeOptions />
         </StatSelection>
-        <StatSelection>
+        <StatSelection name="type">
           <TypeOptions />
         </StatSelection>
-        <StatSelection>
+        <StatSelection name="alignment">
           <AlignmentOptions />
         </StatSelection>
       </CreatureHeadingH2>
@@ -195,18 +220,18 @@ export default function MonsterCreation() {
 
       <PropertyBlock>
         <PropertyBlockP>
-          <AbilitiesTitle />
-        </PropertyBlockP>
-      </PropertyBlock>
-      <PropertyBlock>
-        <PropertyBlockP>
           <AbilitiesDesciption />
         </PropertyBlockP>
       </PropertyBlock>
 
+      <Actions>
+        <ActionsH3>Actions</ActionsH3>
+          <ActionsP>
+          </ActionsP>
+      </Actions>
       <button type="submit">Submit</button>
 
       <OrangeBorderBottom />
-    </StatBlock>
+    </StatBlockForm>
   );
 }
