@@ -58,7 +58,6 @@ export const FirstStatBlock = styled.input`
   background-color: #fdf1dc;
   box-shadow: 0px 1px 0px 0px black;
   font-style: italic;
-
 `;
 
 export const SecondStatBlock = styled.input`
@@ -69,4 +68,15 @@ export const SecondStatBlock = styled.input`
   margin-right: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+`;
+
+export const ThirdStatBlock = styled.input`
+  width: 300px;
+  max-width: 375px;
+  font-size: 15px;
+  margin-right: 20px;
+  border: 0px solid #ccc;
+  background-color: #fdf1dc;
+  box-shadow: 0px 1px 0px 0px black;
+  font-style: italic;
 `;
