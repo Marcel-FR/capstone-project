@@ -24,7 +24,7 @@ export const OrangeBorderBottom = styled.hr`
   margin: 15px -10px -20px;
   background: #e69a28;
   border: 1px solid #000;
-  height: 5px;
+  height: 6px;
   box-sizing: initial;
 `;
 

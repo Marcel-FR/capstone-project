@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Header } from "@/components/Header";
@@ -73,7 +72,6 @@ export default function BestiaryPage() {
             </MonsterName>
           ))}
         </MonsterList>
-        {console.log(`${monstersList.length} monsters listed`)}
       </main>
     </>
   );

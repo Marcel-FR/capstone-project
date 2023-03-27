@@ -41,6 +41,7 @@ export default function InformationPage({ monster }) {
         {monster.size} {monster.type}, {monster.alignment}
       </CreatureHeadingH2>
       <CloseIcon onClick={() => router.push("/bestiary")} />
+
       <SeparationLine>
         <polyline points="0,0 400,2.5 0,5"></polyline>
       </SeparationLine>
@@ -106,12 +107,10 @@ export default function InformationPage({ monster }) {
         <PropertyLineH4>Senses</PropertyLineH4>
         <PropertyLineP> {getSenses(monster)}</PropertyLineP>
       </PropertyLine>
-
       <PropertyLine>
         <PropertyLineH4>Languages</PropertyLineH4>
         <PropertyLineP> {getLanguages(monster)}</PropertyLineP>
       </PropertyLine>
-
       <PropertyLine>
         <PropertyLineH4>Challenge</PropertyLineH4>
         <PropertyLineP>
