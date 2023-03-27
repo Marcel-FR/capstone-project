@@ -20,8 +20,9 @@ import {
   DamageVulnerabilities,
   DamageResistances,
   ConditionImmunities,
-  AbilitiesTitle,
-  AbilitiesDesciption
+  AbilitiesDesciption,
+  ActionsDescription,
+  LegendaryActions
 } from "@/components/bestiaryForm/formFunctions";
 import {
   CloseIcon,
@@ -53,6 +54,7 @@ function handleFormSubmit(event) {
   const form = event.target;
   const formElements = form.elements;
   const data = {
+    index:formElements.name.value,
     name:formElements.name.value, 
     size:formElements.size.value, 
     type:formElements.type.value, armor_class:formElements.armor_class.value, hit_points:formElements.hit_points.value, speed:formElements.speed.value, strength:formElements.strength.value, dexterity:formElements.dexterity.value, constitution:formElements.constitution.value, intelligence:formElements.intelligence.value,
@@ -65,7 +67,9 @@ function handleFormSubmit(event) {
     senses:formElements.senses.value,
     languages:formElements.languages.value,
     challenge_rating:formElements.challenge_rating.value,
-    special_abilities:formElements.special_abilities.value};
+    special_abilities:formElements.special_abilities.value, 
+    actions:formElements.actions.value,
+    legendary_actions:formElements.legendary_actions.value};
   onAddFormData(data);
   form.reset();
   formElements.name.focus();
@@ -227,9 +231,24 @@ function handleFormSubmit(event) {
       <Actions>
         <ActionsH3>Actions</ActionsH3>
           <ActionsP>
+            <ActionsDescription />
           </ActionsP>
       </Actions>
-      <button type="submit">Submit</button>
+
+      <Actions>
+      <ActionsH3>Legendary Actions</ActionsH3>
+      <ActionsP>
+        The monster can take 3 legendary actions, choosing from the options
+        below. Only one legendary action can be used at a time and only at the
+        end of another creature&apos;s turn. The monster regains spent legendary
+        actions at the start of its turn.
+      </ActionsP>
+        <ActionsP>
+          <LegendaryActions />
+        </ActionsP>
+    </Actions>
+
+    <button type="submit">Submit</button>
 
       <OrangeBorderBottom />
     </StatBlockForm>
