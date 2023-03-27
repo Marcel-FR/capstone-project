@@ -1,4 +1,4 @@
-import { TitleInput, FirstStatBlock, SecondStatBlock } from "./formFunctionsStyling";
+import { TitleInput, FirstStatBlock, SecondStatBlock, ThirdStatBlock } from "./formFunctionsStyling";
 
 export function SizeOptions() {
   return (
@@ -193,26 +193,26 @@ export function Challenge() {
   );
 }
 
-export function AbilitiesTitle() {
-  return (
-    <>
-      <input placeholder="e.g. Amphibious" type="text" name="special_abilities" />
-    </>
-  );
-}
-
 export function AbilitiesDesciption() {
   return (
     <>
-      <input placeholder="The creature can breathe air and water" type="text" />
+      <ThirdStatBlock placeholder="e.g. Amphibious: The creature can breathe ..." type="text" name="special_abilities" />
     </>
   );
 }
 
-export function Actions() {
+export function ActionsDescription() {
   return (
     <>
-      <input placeholder="e.g. Tail" type="text" name="actions" />
+      <ThirdStatBlock placeholder="e.g. Multiattack: The creature makes three ..." type="text" name="actions" />
     </>
   );
+}
+
+export function LegendaryActions() {
+  return (
+    <>
+    <ThirdStatBlock placeholder="e.g. Psychic drain: One creature charmed ..." type="text" name="legendary_actions" />
+    </>
+  )
 }
