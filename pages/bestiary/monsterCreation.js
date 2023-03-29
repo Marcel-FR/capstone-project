@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+import { uid } from "uid";
+import { CloseIcon } from "@/components/svgFiles";
+
 import {
   SizeOptions,
   TypeOptions,
@@ -16,16 +19,16 @@ import {
   Senses,
   Languages,
   Challenge,
+  XPInput,
   DamageImmunities,
   DamageVulnerabilities,
   DamageResistances,
   ConditionImmunities,
   AbilitiesDesciption,
   ActionsDescription,
-  LegendaryActions
+  LegendaryActions,
 } from "@/components/bestiaryForm/formFunctions";
 import {
-  CloseIcon,
   OrangeBorder,
   OrangeBorderBottom,
   CreatureHeadingH1,
@@ -42,39 +45,53 @@ import {
   SeparationLine,
   Actions,
   ActionsH3,
-  ActionsP
+  ActionsP,
 } from "@/components/bestiaryPage/informationPageStyling";
-import { StatSelection, StatBlockForm } from "@/components/bestiaryForm/formFunctionsStyling";
+import {
+  StatSelection,
+  StatBlockForm,
+} from "@/components/bestiaryForm/formFunctionsStyling";
 
-export default function MonsterCreation({onAddFormData}) {
+export default function MonsterCreation({ onAddFormData }) {
   const router = useRouter();
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const formElements = form.elements;
-  const data = {
-    index:formElements.name.value,
-    name:formElements.name.value, 
-    size:formElements.size.value, 
-    type:formElements.type.value, armor_class:formElements.armor_class.value, hit_points:formElements.hit_points.value, speed:formElements.speed.value, strength:formElements.strength.value, dexterity:formElements.dexterity.value, constitution:formElements.constitution.value, intelligence:formElements.intelligence.value,
-    wisdom:formElements.wisdom.value, 
-    charisma:formElements.charisma.value, 
-    damage_immunities:formElements.damage_immunities.value, 
-    damage_vulnerabilities:formElements.damage_vulnerabilities.value,
-    damage_resistances:formElements.damage_resistances.value,
-    condition_immunities:formElements.condition_immunities.value,
-    senses:formElements.senses.value,
-    languages:formElements.languages.value,
-    challenge_rating:formElements.challenge_rating.value,
-    special_abilities:formElements.special_abilities.value, 
-    actions:formElements.actions.value,
-    legendary_actions:formElements.legendary_actions.value};
-  onAddFormData(data);
-  form.reset();
-  formElements.name.focus();
-  router.push('/bestiary');
-}
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formElements = form.elements;
+    const data = {
+      index: formElements.name.value,
+      name: formElements.name.value,
+      size: formElements.size.value,
+      type: formElements.type.value,
+      alignment: formElements.alignment.value,
+      armor_class: [{ value: formElements.armor_class.value }],
+      hit_points: formElements.hit_points.value,
+      speed: { walk: formElements.speed.value },
+      strength: formElements.strength.value,
+      dexterity: formElements.dexterity.value,
+      constitution: formElements.constitution.value,
+      intelligence: formElements.intelligence.value,
+      wisdom: formElements.wisdom.value,
+      charisma: formElements.charisma.value,
+      damage_immunities: [formElements.damage_immunities.value],
+      damage_vulnerabilities: [formElements.damage_vulnerabilities.value],
+      damage_resistances: [formElements.damage_resistances.value],
+      condition_immunities: [{ name: formElements.condition_immunities.value }],
+      senses: { 1: formElements.senses.value },
+      languages: formElements.languages.value,
+      challenge_rating: formElements.challenge_rating.value,
+      xp: formElements.xp.value,
+      special_abilities: [{ desc: formElements.special_abilities.value }],
+      actions: [{ attack_bonus: formElements.actions.value }],
+      legendary_actions: [{ desc: formElements.legendary_actions.value }],
+      id: uid(),
+    };
+    onAddFormData(data);
+    form.reset();
+    formElements.name.focus();
+    router.push("/bestiary");
+  }
 
   return (
     <StatBlockForm onSubmit={handleFormSubmit} action="/bestiary">
@@ -83,17 +100,17 @@ function handleFormSubmit(event) {
         <Name />
       </CreatureHeadingH1>
       <CreatureHeadingH2>
-        <StatSelection name="size">
+        <StatSelection name="size" required>
           <SizeOptions />
         </StatSelection>
-        <StatSelection name="type">
+        <StatSelection name="type" required>
           <TypeOptions />
         </StatSelection>
-        <StatSelection name="alignment">
+        <StatSelection name="alignment" required>
           <AlignmentOptions />
         </StatSelection>
       </CreatureHeadingH2>
-      <CloseIcon onClick={() => router.push("/bestiary")} />
+      <CloseIcon />
 
       <SeparationLine>
         <polyline points="0,0 400,2.5 0,5"></polyline>
@@ -214,7 +231,7 @@ function handleFormSubmit(event) {
         <PropertyLineH4>Challenge</PropertyLineH4>
         <PropertyLineP>
           {" "}
-          <Challenge />
+          <Challenge /> <XPInput />
         </PropertyLineP>
       </PropertyLine>
 
@@ -230,25 +247,25 @@ function handleFormSubmit(event) {
 
       <Actions>
         <ActionsH3>Actions</ActionsH3>
-          <ActionsP>
-            <ActionsDescription />
-          </ActionsP>
+        <ActionsP>
+          <ActionsDescription />
+        </ActionsP>
       </Actions>
 
       <Actions>
-      <ActionsH3>Legendary Actions</ActionsH3>
-      <ActionsP>
-        The monster can take 3 legendary actions, choosing from the options
-        below. Only one legendary action can be used at a time and only at the
-        end of another creature&apos;s turn. The monster regains spent legendary
-        actions at the start of its turn.
-      </ActionsP>
+        <ActionsH3>Legendary Actions</ActionsH3>
+        <ActionsP>
+          The monster can take 3 legendary actions, choosing from the options
+          below. Only one legendary action can be used at a time and only at the
+          end of another creature&apos;s turn. The monster regains spent
+          legendary actions at the start of its turn.
+        </ActionsP>
         <ActionsP>
           <LegendaryActions />
         </ActionsP>
-    </Actions>
+      </Actions>
 
-    <button type="submit">Submit</button>
+      <button type="submit">Submit</button>
 
       <OrangeBorderBottom />
     </StatBlockForm>
