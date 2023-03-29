@@ -1,26 +1,51 @@
-import { MdAdd, MdArrowBack, MdClose, MdDelete, MdEdit } from "react-icons/md";
+import { MdAdd, MdArrowBack, MdClose } from "react-icons/md";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
 // The knowledge about the correct import/export and styling of the SVGs was taken from various websites on the Internet.
 
-// Header section
+// Header styling
+const ArrowWrapper = styled.button`
+  font-size: 30px;
+  background-color: #ac2023;
+  border: none;
+  color: #f5e5c3;
+  margin: 0 0 0 15px;
+  font-size: 35px;
+`;
+
+const AddWrapper = styled.button`
+  font-size: 30px;
+  background-color: #ac2023;
+  border: none;
+  color: #f5e5c3;
+  margin: 0 15px 0 0px;
+  font-size: 35px;
+`;
+
+const CloseWrapper = styled.button`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5e5c3;
+  color: #ac2023;
+  border: none;
+  font-size: 30px;
+  width: 40px;
+  top: 10px;
+  right: 10px;
+`;
+
+//Header functions
 export function BackArrowIcon() {
   const router = useRouter();
   return (
-    <ArrowIcon>
+    <ArrowWrapper>
       <MdArrowBack onClick={() => router.push("/")} />
-    </ArrowIcon>
+    </ArrowWrapper>
   );
 }
-
-const ArrowIcon = styled.button`
-font-size: 30px;
-background-color: #ac2023;
-border: none;
-color: #f5e5c3;
-`;
-
 
 export function AddIcon() {
   const router = useRouter();
@@ -31,13 +56,6 @@ export function AddIcon() {
   );
 }
 
-const AddWrapper = styled.button`
-font-size: 30px;
-background-color: #ac2023;
-border: none;
-color: #f5e5c3;
-`;
-
 export function CloseIcon() {
   const router = useRouter();
   return (
@@ -47,43 +65,23 @@ export function CloseIcon() {
   );
 }
 
-const CloseWrapper = styled.button`
-font-size: 30px;
-background-color: #ac2023;
-border: none;
-color: #f5e5c3;
-`;
-
-export function DeleteIcon({onDeleteMonster, handleDeleteMonster}) {
-  const router = useRouter();
-  return (
-    <DeleteWrapper>
-      <MdDelete onClick={() => onDeleteMonster={handleDeleteMonster}} />
-    </DeleteWrapper>
-  );
-}
-
-const DeleteWrapper = styled.button`
-font-size: 30px;
-background-color: #ac2023;
-border: none;
-color: #f5e5c3;
-`
-
-export function EditButton() {
+/* export function EditButton() {
   const router = useRouter();
   return (
     <EditWrapper>
       <MdEdit />
     </EditWrapper>
-  )
+  );
 }
 
 const EditWrapper = styled.button`
-font-size: 30px;
-background-color: #ac2023;
-border: none;
-color: #f5e5c3;
-`
+  font-size: 30px;
+  background-color: #f5e5c3;
+  border: none;
+  color: black;
+  margin: 0 0 0 0;
+`; */
+
 /* export function SearchButton() */
+
 // More SVG sections to come..
