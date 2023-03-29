@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Header } from "@/components/Header";
-import MonsterCreation from "./monsterCreation";
-import useLocalStorageState from "use-local-storage-state";
-
-const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
 
 const MonsterList = styled.ul`
   list-style: none;
@@ -44,27 +39,19 @@ const MonsterName = styled.li`
 
 // The styled components were partially taken from StackOverflow
 
-export default function BestiaryPage({data}) {
-  const [monstersList, setMonstersList] = useState(monsters);
+export default function BestiaryPage({ data, monsterData }) {
   const router = useRouter();
 
   const handleClick = (id) => {
     router.push(`/bestiary/${id}`);
   };
 
-  const [newMonsterData, setNewMonsterData] = useLocalStorageState("monsterData");
-
-  console.log(newMonsterData);
-  console.log(data);
-  setNewMonsterData([...monsters, data]);
-  console.log(monsters);
-
   return (
     <>
       <main>
         <Header pageTitle={"Bestiary"} />
         <MonsterList>
-          {newMonsterData?.map((monster) => (
+          {monsterData?.map((monster) => (
             <MonsterName
               key={monster.index}
               onClick={() => handleClick(monster.index)}
@@ -81,4 +68,3 @@ export default function BestiaryPage({data}) {
     </>
   );
 }
-
