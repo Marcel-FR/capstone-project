@@ -25,15 +25,15 @@ export const TitleInput = styled.input`
   box-shadow: 0px 1px 0px 0px black;
 
   ::placeholder {
-  font-family: "Libre Baskerville", "Lora", "Calisto MT", "Bookman Old Style",
-    Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter",
-    Georgia, serif;
-  color: #922610;
-  font-size: 20px;
-  line-height: 1.2em;
-  letter-spacing: 1px;
-  font-variant: small-caps;
-  font-weight: bold;
+    font-family: "Libre Baskerville", "Lora", "Calisto MT", "Bookman Old Style",
+      Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter",
+      Georgia, serif;
+    color: #922610;
+    font-size: 20px;
+    line-height: 1.2em;
+    letter-spacing: 1px;
+    font-variant: small-caps;
+    font-weight: bold;
   }
 `;
 
@@ -47,7 +47,6 @@ export const StatSelection = styled.select`
   box-shadow: 0px 1px 0px 0px black;
   font-style: italic;
 `;
-
 
 export const FirstStatBlock = styled.input`
   width: 150px;
@@ -66,8 +65,9 @@ export const SecondStatBlock = styled.input`
   text-align: center;
   padding: 5px;
   margin-right: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 4px;
+  background-color: #fdf1dc;
 `;
 
 export const ThirdStatBlock = styled.input`
@@ -75,6 +75,15 @@ export const ThirdStatBlock = styled.input`
   max-width: 375px;
   font-size: 15px;
   margin-right: 20px;
+  border: 0px solid #ccc;
+  background-color: #fdf1dc;
+  box-shadow: 0px 1px 0px 0px black;
+  font-style: italic;
+`;
+
+export const ChallengeStatblock = styled.input`
+  width: 130px;
+  font-size: 15px;
   border: 0px solid #ccc;
   background-color: #fdf1dc;
   box-shadow: 0px 1px 0px 0px black;
