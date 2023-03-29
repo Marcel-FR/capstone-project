@@ -1,5 +1,18 @@
 import styled from "styled-components";
-import { backArrowIcon } from "@/assets/svgFiles";
+
+export const DeleteWrapper = styled.button`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5e5c3;
+  color: #ac2023;
+  border: none;
+  font-size: 30px;
+  width: 40px;
+  top: 10px;
+  right: 50px;
+`;
 
 export const StatBlock = styled.div`
   text-align: left;
@@ -8,6 +21,8 @@ export const StatBlock = styled.div`
   background: #fdf1dc;
   padding: 5px 10px 20px;
   box-shadow: 0 0 1.5em #867453;
+  max-width: 375px;
+  word-wrap: break-word;
 `;
 
 export const OrangeBorder = styled.hr`
@@ -24,7 +39,7 @@ export const OrangeBorderBottom = styled.hr`
   margin: 15px -10px -20px;
   background: #e69a28;
   border: 1px solid #000;
-  height: 5px;
+  height: 6px;
   box-sizing: initial;
 `;
 
@@ -60,14 +75,6 @@ export const CreatureHeadingH2 = styled.h2`
   font-size: 12px;
   line-height: 1.2em;
   margin: 0 0 10px;
-  color: black;
-`;
-
-export const BackArrow2 = styled(backArrowIcon)`
-  fill: black;
-  margin: -45px 0px 0px 315px;
-  vertical-align: middle;
-  position: absolute;
   color: black;
 `;
 

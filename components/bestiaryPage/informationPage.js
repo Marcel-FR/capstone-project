@@ -1,3 +1,4 @@
+import { MdDelete } from "react-icons/md";
 import {
   getArmorClass,
   getSpeed,
@@ -12,6 +13,7 @@ import {
   getLegendaryActions,
 } from "./informationPageFunctions";
 import {
+  DeleteWrapper,
   StatBlock,
   OrangeBorder,
   OrangeBorderBottom,
@@ -28,19 +30,34 @@ import {
   AbilitiesP,
   SeparationLine,
 } from "./informationPageStyling";
-import { BackArrow2 } from "./informationPageStyling";
 import { useRouter } from "next/router";
+import { CloseIcon } from "../svgFiles";
 
-export default function InformationPage({ monster }) {
+export default function InformationPage({
+  monster,
+  onDeleteMonster,
+  monsterData,
+}) {
+  console.log(monster);
   const router = useRouter();
   return (
     <StatBlock>
       <OrangeBorder />
-      <CreatureHeadingH1>{monster.name}</CreatureHeadingH1>
+      <CreatureHeadingH1>{monster?.name}</CreatureHeadingH1>
+      {monster?.id && (
+        <DeleteWrapper>
+          <MdDelete
+            onClick={() => {
+              onDeleteMonster(monster?.id);
+              router.push("/bestiary");
+            }}
+          />
+        </DeleteWrapper>
+      )}
+      <CloseIcon />
       <CreatureHeadingH2>
-        {monster.size} {monster.type}, {monster.alignment}
+        {monster?.size} {monster?.type}, {monster?.alignment}
       </CreatureHeadingH2>
-      <BackArrow2 onClick={() => router.push("/bestiary")} />
       <SeparationLine>
         <polyline points="0,0 400,2.5 0,5"></polyline>
       </SeparationLine>
@@ -53,8 +70,8 @@ export default function InformationPage({ monster }) {
         <PropertyLineH4>Hit Points</PropertyLineH4>
         <PropertyLineP>
           {" "}
-          {monster.hit_points}{" "}
-          {monster.hit_dice && <span>({monster.hit_dice})</span>}
+          {monster?.hit_points}{" "}
+          {monster?.hit_dice && <span>({monster?.hit_dice})</span>}
         </PropertyLineP>
       </PropertyLine>
       <PropertyLine>
@@ -69,27 +86,27 @@ export default function InformationPage({ monster }) {
       <Abilities>
         <AbilitiesDiv>
           <AbilitiesH4>STR</AbilitiesH4>
-          <AbilitiesP>{monster.strength}</AbilitiesP>
+          <AbilitiesP>{monster?.strength}</AbilitiesP>
         </AbilitiesDiv>
         <AbilitiesDiv>
           <AbilitiesH4>DEX</AbilitiesH4>
-          <AbilitiesP>{monster.dexterity}</AbilitiesP>
+          <AbilitiesP>{monster?.dexterity}</AbilitiesP>
         </AbilitiesDiv>
         <AbilitiesDiv>
           <AbilitiesH4>CON</AbilitiesH4>
-          <AbilitiesP>{monster.constitution}</AbilitiesP>
+          <AbilitiesP>{monster?.constitution}</AbilitiesP>
         </AbilitiesDiv>
         <AbilitiesDiv>
           <AbilitiesH4>INT</AbilitiesH4>
-          <AbilitiesP>{monster.intelligence}</AbilitiesP>
+          <AbilitiesP>{monster?.intelligence}</AbilitiesP>
         </AbilitiesDiv>
         <AbilitiesDiv>
           <AbilitiesH4>WIS</AbilitiesH4>
-          <AbilitiesP>{monster.wisdom}</AbilitiesP>
+          <AbilitiesP>{monster?.wisdom}</AbilitiesP>
         </AbilitiesDiv>
         <AbilitiesDiv>
           <AbilitiesH4>CHA</AbilitiesH4>
-          <AbilitiesP>{monster.charisma}</AbilitiesP>
+          <AbilitiesP>{monster?.charisma}</AbilitiesP>
         </AbilitiesDiv>
       </Abilities>
 
@@ -106,17 +123,15 @@ export default function InformationPage({ monster }) {
         <PropertyLineH4>Senses</PropertyLineH4>
         <PropertyLineP> {getSenses(monster)}</PropertyLineP>
       </PropertyLine>
-
       <PropertyLine>
         <PropertyLineH4>Languages</PropertyLineH4>
         <PropertyLineP> {getLanguages(monster)}</PropertyLineP>
       </PropertyLine>
-
       <PropertyLine>
         <PropertyLineH4>Challenge</PropertyLineH4>
         <PropertyLineP>
           {" "}
-          {monster.challenge_rating} ({monster.xp} XP)
+          {monster?.challenge_rating} ({monster?.xp} XP)
         </PropertyLineP>
       </PropertyLine>
 

@@ -1,14 +1,6 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Header } from "@/components/Header";
-
-const monsters = require("../../resources/lib/5e-SRD-Monsters.json");
-
-const Heading = styled.h1`
-  text-align: center;
-`;
 
 const MonsterList = styled.ul`
   list-style: none;
@@ -47,8 +39,7 @@ const MonsterName = styled.li`
 
 // The styled components were partially taken from StackOverflow
 
-export default function BestiaryPage() {
-  const [monstersList] = useState(monsters);
+export default function BestiaryPage({ data, monsterData }) {
   const router = useRouter();
 
   const handleClick = (id) => {
@@ -60,20 +51,19 @@ export default function BestiaryPage() {
       <main>
         <Header pageTitle={"Bestiary"} />
         <MonsterList>
-          {monstersList.map((monster) => (
+          {monsterData?.map((monster) => (
             <MonsterName
               key={monster.index}
               onClick={() => handleClick(monster.index)}
             >
               <div>{monster.name}</div>
               <div className="monster-details">
-                <div className="monster-type">Type: {monster.type}</div>
+                <div className="monster-type">{monster.type}</div>
                 <div className="monster-cr">CR: {monster.challenge_rating}</div>
               </div>
             </MonsterName>
           ))}
         </MonsterList>
-        {console.log(`${monstersList.length} monsters listed`)}
       </main>
     </>
   );

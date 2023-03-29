@@ -14,7 +14,7 @@ export function getArmorClass(monster) {
 }
 
 export function getLanguages(monster) {
-  if (!monster.languages) {
+  if (!monster?.languages) {
     return <span>Cannot understand any language</span>;
   }
 
@@ -22,8 +22,8 @@ export function getLanguages(monster) {
 }
 
 export function getSpeed(monster) {
-  const { walk = "", swim = "", fly = "", hover = "" } = monster.speed || {};
-  let speedString = "Speed: ";
+  const { walk = "", swim = "", fly = "", hover = "" } = monster?.speed || {};
+  let speedString = "";
 
   if (walk) {
     speedString += `${walk}`;
@@ -62,8 +62,11 @@ export function getSenses(monster) {
 
 export function getDamageVulnerabilities(monster) {
   if (
-    !monster.damage_vulnerabilities ||
-    monster.damage_vulnerabilities.length === 0
+    !monster?.damage_vulnerabilities ||
+    monster.damage_vulnerabilities.length === 0 ||
+    monster.damage_vulnerabilities.some(
+      (vulnerability) => vulnerability.trim() === ""
+    )
   ) {
     return null;
   }
@@ -81,7 +84,11 @@ export function getDamageVulnerabilities(monster) {
 }
 
 export function getDamageResistances(monster) {
-  if (!monster.damage_resistances || monster.damage_resistances.length === 0) {
+  if (
+    !monster?.damage_resistances ||
+    monster.damage_resistances.length === 0 ||
+    monster.damage_resistances.some((resistance) => resistance.trim() === "")
+  ) {
     return null;
   }
 
@@ -98,7 +105,11 @@ export function getDamageResistances(monster) {
 }
 
 export function getDamageImmunities(monster) {
-  if (!monster.damage_immunities || monster.damage_immunities.length === 0) {
+  if (
+    !monster?.damage_immunities ||
+    monster.damage_immunities.length === 0 ||
+    monster.damage_immunities.some((immunity) => immunity.trim() === "")
+  ) {
     return null;
   }
 
@@ -114,15 +125,18 @@ export function getDamageImmunities(monster) {
 
 export function getConditionImmunities(monster) {
   if (
-    !monster.condition_immunities ||
-    monster.condition_immunities.length === 0
+    !monster?.condition_immunities ||
+    monster.condition_immunities.length === 0 ||
+    monster.condition_immunities.some((immunity) => immunity.name.trim() === "")
   ) {
     return null;
   }
 
-  const conditionImmunities = monster.condition_immunities.map((condition) => {
-    return condition.name;
-  });
+  const conditionImmunities = monster.condition_immunities
+    .filter((immunity) => immunity.name.trim() !== "")
+    .map((condition) => {
+      return condition.name;
+    });
 
   return (
     <PropertyLine>

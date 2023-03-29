@@ -4,6 +4,7 @@ export default createGlobalStyle`
   *,
   *::before,
   *::after {
+    max-width: 375px;
     box-sizing: border-box;
   }
   body {
