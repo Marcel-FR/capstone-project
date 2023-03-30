@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SpellName = styled.ul`
+export const SpellName = styled.div`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -21,13 +21,13 @@ export const SpellDetails = styled.div`
   margin-left: 10px;
 `;
 
-export const SpellSchool = styled.li`
+export const SpellSchool = styled.div`
   font-style: italic;
   font-size: 0.8rem;
   text-align: right;
 `;
 
-export const SpellLevel = styled.li`
+export const SpellLevel = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
   margin-left: auto;

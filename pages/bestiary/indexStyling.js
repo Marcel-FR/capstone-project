@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MonsterName = styled.ul`
+export const MonsterName = styled.div`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -21,13 +21,13 @@ export const MonsterDetails = styled.div`
   margin-left: 10px;
 `;
 
-export const MonsterType = styled.li`
+export const MonsterType = styled.div`
   font-style: italic;
   font-size: 0.8rem;
   text-align: right;
 `;
 
-export const MonsterCR = styled.li`
+export const MonsterCR = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
   margin-left: auto;
