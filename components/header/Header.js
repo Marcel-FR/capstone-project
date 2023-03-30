@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BackArrowIcon, SpellBackArrowIcon, AddIcon } from "./svgFiles";
+import { BackArrowIcon, SpellBackArrowIcon, AddIcon } from "../svgStyles/svgFiles";
 import { useRouter } from "next/router";
 
 // Bestiary
