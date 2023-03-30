@@ -38,8 +38,7 @@ const StyledSpellHeader = styled.header`
   position: relative;
   width: 375px;
   height: 80px;
-  color: #6772de;
-  background-color: #6772de;
+  background-color: #20aca9;
   display: flex;
   justify-content: space-between;
   align-items: center;
