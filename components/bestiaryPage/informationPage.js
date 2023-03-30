@@ -1,17 +1,6 @@
 import { MdDelete } from "react-icons/md";
-import {
-  getArmorClass,
-  getSpeed,
-  getSenses,
-  getLanguages,
-  getDamageVulnerabilities,
-  getDamageResistances,
-  getDamageImmunities,
-  getConditionImmunities,
-  getMonsterActions,
-  getSpecialAbilities,
-  getLegendaryActions,
-} from "./informationPageFunctions";
+import { useRouter } from "next/router";
+import { CloseIcon } from "../svgFiles";
 import {
   DeleteWrapper,
   StatBlock,
@@ -30,8 +19,19 @@ import {
   AbilitiesP,
   SeparationLine,
 } from "./informationPageStyling";
-import { useRouter } from "next/router";
-import { CloseIcon } from "../svgFiles";
+import {
+  getArmorClass,
+  getSpeed,
+  getSenses,
+  getLanguages,
+  getDamageVulnerabilities,
+  getDamageResistances,
+  getDamageImmunities,
+  getConditionImmunities,
+  getMonsterActions,
+  getSpecialAbilities,
+  getLegendaryActions,
+} from "./informationPageFunctions";
 
 export default function InformationPage({
   monster,

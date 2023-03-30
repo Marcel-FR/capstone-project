@@ -100,9 +100,8 @@ export const PropertyLineH4 = styled.h4`
   line-height: 1.2em;
 `;
 
-export const PropertyLineP = styled.p`
+export const PropertyLineP = styled.div`
   display: inline;
-  margin: 0;
   color: #922610;
   font-size: 13.5px;
   line-height: 1.2em;

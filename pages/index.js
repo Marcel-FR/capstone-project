@@ -1,25 +1,16 @@
-import styled from "styled-components";
-import Link from "next/link";
-
-const StyledButton = styled.a`
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: #ccc;
-  text-decoration: none;
-  color: #333;
-`;
+import { D20 } from "@/components/svgFiles";
+import { Heading, Ring, StyledBestiaryLink, StyledSpellbookLink } from "@/components/homescreenStyling";
 
 export default function Home() {
   return (
     <>
-      <main>
-        <Heading>Home</Heading>
-      </main>
-      <Link href="/bestiary">Bestiary</Link>
+      <Heading>
+        Delver&apos;s <br /> Guide
+      </Heading>
+      <Ring color="#ac2023" />
+      <D20 />
+      <StyledBestiaryLink href="/bestiary"></StyledBestiaryLink>
+      <StyledSpellbookLink href="/spells"></StyledSpellbookLink>
     </>
   );
 }
-
-const Heading = styled.h1`
-  text-align: center;
-`;
