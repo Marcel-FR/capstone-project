@@ -14,6 +14,15 @@ const ArrowWrapper = styled.button`
   font-size: 35px;
 `;
 
+const SpellArrowWrapper = styled.button`
+  font-size: 30px;
+  background-color: #6772de;
+  border: none;
+  color: #f5e5c3;
+  margin: 0 0 0 15px;
+  font-size: 35px;
+`;
+
 const AddWrapper = styled.button`
   font-size: 30px;
   background-color: #ac2023;
@@ -44,6 +53,15 @@ export function BackArrowIcon() {
     <ArrowWrapper>
       <MdArrowBack onClick={() => router.push("/")} />
     </ArrowWrapper>
+  );
+}
+
+export function SpellBackArrowIcon() {
+  const router = useRouter();
+  return (
+    <SpellArrowWrapper>
+      <MdArrowBack onClick={() => router.push("/")} />
+    </SpellArrowWrapper>
   );
 }
 
