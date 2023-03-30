@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SpellsPage from "./index";
 import { useRouter } from "next/router";
+import { expect } from "@jest/globals";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),

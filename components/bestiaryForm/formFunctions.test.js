@@ -1,6 +1,7 @@
 import { toBeInTheDocument } from "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { AC, HP, Speed } from "./formFunctions";
+import { expect } from "@jest/globals";
 
 describe("AC component", () => {
   it("renders an input field with correct props", () => {

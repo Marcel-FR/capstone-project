@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { SpellBackArrowIcon, AddIcon, CloseIcon } from "./svgFiles";
+import { expect } from "@jest/globals";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
