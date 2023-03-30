@@ -1,5 +1,5 @@
-import { D20 } from "@/components/svgFiles";
-import { Heading, Ring, StyledBestiaryLink, StyledSpellbookLink } from "@/components/homescreenStyling";
+import { D20 } from "@/components/svgStyles/svgFiles";
+import { Heading, Ring, StyledBestiaryLink, StyledSpellbookLink } from "@/components/home/homescreenStyling";
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-import { SpellHeader } from "@/components/Header";
+import { SpellHeader } from "../../components/header/Header";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Scrollbars } from "react-custom-scrollbars-2";

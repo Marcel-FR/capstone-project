@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import InformationPage from "@/components/bestiaryPage/informationPage";
+import InformationPage from "../../components/bestiaryPage/informationPage";
 
 export default function BestiaryIdPage({ monsterData, onDeleteMonster }) {
   const router = useRouter();

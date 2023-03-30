@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/header/Header";
 import Scrollbars from "react-custom-scrollbars-2";
 import {
   MonsterName,

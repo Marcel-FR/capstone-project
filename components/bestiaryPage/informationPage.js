@@ -1,6 +1,6 @@
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/router";
-import { CloseIcon } from "../svgFiles";
+import { CloseIcon } from "../svgStyles/svgFiles";
 import {
   DeleteWrapper,
   StatBlock,
