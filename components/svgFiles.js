@@ -50,7 +50,7 @@ const CloseWrapper = styled.button`
 const D20Wrapper = styled.div`
   position: absolute;
   font-size: 190px;
-  top: 37vh;
+  top: 36vh;
   left: 14.3vh;
   color: #f5e5c3;
 `
