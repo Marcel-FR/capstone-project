@@ -1,46 +1,17 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
-
-const MonsterList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const MonsterName = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 2px solid transparent;
-  width: 100%;
-  padding: 10px;
-  text-align: left;
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  .monster-details {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-
-    .monster-type {
-      font-style: italic;
-      font-size: 0.8rem;
-    }
-
-    .monster-cr {
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-left: auto;
-    }
-  }
-`;
-
-// The styled components were partially taken from StackOverflow
+import Scrollbars from "react-custom-scrollbars-2";
+import {
+  MonsterName,
+  MonsterCR,
+  MonsterDetails,
+  MonsterType,
+} from "./indexStyling";
 
 export default function BestiaryPage({ data, monsterData }) {
   const router = useRouter();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleClick = (id) => {
     router.push(`/bestiary/${id}`);
@@ -48,23 +19,28 @@ export default function BestiaryPage({ data, monsterData }) {
 
   return (
     <>
-      <main>
-        <Header pageTitle={"Bestiary"} />
-        <MonsterList>
-          {monsterData?.map((monster) => (
-            <MonsterName
-              key={monster.index}
-              onClick={() => handleClick(monster.index)}
-            >
-              <div>{monster.name}</div>
-              <div className="monster-details">
-                <div className="monster-type">{monster.type}</div>
-                <div className="monster-cr">CR: {monster.challenge_rating}</div>
-              </div>
-            </MonsterName>
-          ))}
-        </MonsterList>
-      </main>
+      <Header pageTitle={"Bestiary"} />
+      <Scrollbars
+        style={{ width: "100%", height: "calc(100vh - 90px)" }}
+        universal
+        onScroll={(e) => setScrollPosition(e.target.scrollTop)}
+        scrollTop={scrollPosition}
+      >
+        {monsterData?.map((monster) => (
+          <MonsterName
+            key={monster.index}
+            onClick={() => handleClick(monster.index)}
+          >
+            <div>{monster.name}</div>
+            <MonsterDetails>
+              <MonsterType>{monster.type}</MonsterType>
+              <MonsterCR>CR: {monster.challenge_rating}</MonsterCR>
+            </MonsterDetails>
+          </MonsterName>
+        ))}
+      </Scrollbars>
     </>
   );
 }
+
+// The knowledge of how the custom scrollbars work comes from the react-custom-scrollbars-2 documentation => https://www.npmjs.com/package/react-custom-scrollbars-2
