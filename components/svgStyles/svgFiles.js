@@ -1,5 +1,5 @@
 import { MdAdd, MdArrowBack, MdClose } from "react-icons/md";
-import { GiDiceTwentyFacesTwenty } from 'react-icons/gi';
+import { GiDiceTwentyFacesTwenty } from "react-icons/gi";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
@@ -53,7 +53,7 @@ const D20Wrapper = styled.div`
   top: 35.5vh;
   left: 14.3vh;
   color: #f5e5c3;
-`
+`;
 
 //Header functions
 export function BackArrowIcon() {
@@ -69,7 +69,7 @@ export function SpellBackArrowIcon() {
   const router = useRouter();
   return (
     <SpellArrowWrapper>
-      <MdArrowBack onClick={() => router.push("/")} />
+      <MdArrowBack data-testid="back-arrow" onClick={() => router.push("/")} />
     </SpellArrowWrapper>
   );
 }
@@ -78,7 +78,10 @@ export function AddIcon() {
   const router = useRouter();
   return (
     <AddWrapper>
-      <MdAdd onClick={() => router.push("/bestiary/monsterCreation")} />
+      <MdAdd
+        data-testid="add-icon"
+        onClick={() => router.push("/bestiary/monsterCreation")}
+      />
     </AddWrapper>
   );
 }
@@ -87,7 +90,10 @@ export function CloseIcon() {
   const router = useRouter();
   return (
     <CloseWrapper>
-      <MdClose onClick={() => router.push("/bestiary")} />
+      <MdClose
+        data-testid="close-icon"
+        onClick={() => router.push("/bestiary")}
+      />
     </CloseWrapper>
   );
 }

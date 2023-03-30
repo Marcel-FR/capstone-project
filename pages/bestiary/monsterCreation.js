@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { uid } from "uid";
-import { CloseIcon } from "@/components/svgFiles";
+import { CloseIcon } from "@/components/svgStyles/svgFiles";
 
 import {
   SizeOptions,
