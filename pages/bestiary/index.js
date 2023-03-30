@@ -7,7 +7,7 @@ import {
   MonsterCR,
   MonsterDetails,
   MonsterType,
-} from "./indexStyling";
+} from "../../components/bestiaryPage/indexStyling";
 
 export default function BestiaryPage({ data, monsterData }) {
   const router = useRouter();

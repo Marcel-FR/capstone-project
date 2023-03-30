@@ -7,7 +7,7 @@ import {
   SpellDetails,
   SpellLevel,
   SpellSchool,
-} from "./indexStyling";
+} from "../../components/spellsPage/indexStyling";
 
 export default function SpellsPage({ spells }) {
   const [spellsList, setSpellsList] = useState(spells);
