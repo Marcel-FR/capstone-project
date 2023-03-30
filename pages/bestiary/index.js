@@ -23,8 +23,8 @@ export default function BestiaryPage({ data, monsterData }) {
       <Scrollbars
         style={{ width: "100%", height: "calc(100vh - 90px)" }}
         universal
-        onScroll={(e) => setScrollPosition(e.target.scrollTop)}
-        scrollTop={scrollPosition}
+        onScroll={(e) => setScrollPosition(e.target.scrolltop)}
+        scrolltop={scrollPosition}
       >
         {monsterData?.map((monster) => (
           <MonsterName

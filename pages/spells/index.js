@@ -26,8 +26,8 @@ export default function SpellsPage({ spells }) {
       <Scrollbars
         style={{ width: "100%", height: "calc(100vh - 90px)" }}
         universal
-        onScroll={(e) => setScrollPosition(e.target.scrollTop)}
-        scrollTop={scrollPosition}
+        onScroll={(e) => setScrollPosition(e.target.scrolltop)}
+        scrolltop={scrollPosition}
       >
         {spellsList.map((spell) => (
           <SpellName key={spell.index} onClick={() => handleClick(spell.index)}>
