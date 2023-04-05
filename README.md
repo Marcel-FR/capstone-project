@@ -6,7 +6,7 @@
 
 ## `Description`
 
-**This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
+**This is a capstone project for the [neuefische](https://www.neuefische.de/) web development bootcamp.**
 
 Delver's Guide is an app that let's you find and create any monster and spell from the Dungeons & Dragons universe!
 
@@ -33,7 +33,6 @@ You can find the hosted version on Vercel: [Delver's Guide Demo](https://capston
 - Clone this repository
 - Inside root folder install all dependencies via `$ npm install`
 - Run app in development mode via `$ npm run dev`
-- Client: http://localhost:4000/
-- Run tests via `$ npm run test`
-- Run Storybook via `$ npm run storybook`
+- Client: http://localhost:3000/
 - Look at the App in the IPhone SE display with the DevTools
+- Run tests via `$ npm run test`
