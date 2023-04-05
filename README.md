@@ -1,38 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# :dragon: Delver's Guide – Capstone project
 
-## Getting Started
+> Delver's Guide is a list of all monsters and spells from Dungeons & Dragons.
 
-First, run the development server:
+![image](https://user-images.githubusercontent.com/121642717/230120312-998d3864-d174-49c9-833f-e880eda672c2.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## `Description`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Delver's Guide is an app that let's you find and create any monster and spell from the Dungeons & Dragons universe!
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### `Demo`
+You can find the hosted version on Vercel: [Delver's Guide Demo](https://capstone-project-tau-rosy.vercel.app)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+***IMPORTANT NOTE: currently optimized for IPhone SE!***
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## `Tech Stack`
 
-To learn more about Next.js, take a look at the following resources:
+- React
+- React Router
+- React Custom Hooks
+- Styled-Components
+- React Testing Library / Jest
+- localStorage
+- PropTypes
+- 5e-SRD-API
+- Figma
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## `Project Setup`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Clone this repository
+- Inside root folder install all dependencies via `$ npm install`
+- Run app in development mode via `$ npm run dev`
+- Client: http://localhost:4000/
+- Run tests via `$ npm run test`
+- Run Storybook via `$ npm run storybook`
+- Look at the App in the IPhone SE display with the DevTools
